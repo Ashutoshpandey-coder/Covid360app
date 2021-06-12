@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <group android:checkableBehavior="single">
+        <item android:id="@+id/nav_home"
+            android:icon="@drawable/ic_home_icon_24"
+            android:title="@string/nav_home"/>
+        <item android:id="@+id/nav_precaution"
+            android:icon="@drawable/outline_report_problem_24"
+            android:title="@string/nav_precautions"/>
+        <item android:id="@+id/nav_test_centres"
+            android:icon="@drawable/outline_business_center_24"
+            android:title="@string/nav_test_centres"/>
+        <item android:id="@+id/nav_vaccination_info"
+            android:icon="@drawable/outline_medical_services_24"
+            android:title="@string/nav_vaccination_info"/>
+        <item android:id="@+id/nav_self_diagnosis"
+            android:icon="@drawable/outline_biotech_24"
+            android:title="@string/nav_self_diagnosis"/>
+        <item android:id="@+id/nav_consult_a_doctor"
+            android:icon="@drawable/outline_assignment_24"
+            android:title="@string/nav_consult_a_doctor"/>
+        <item android:id="@+id/nav_about_covid360"
+            android:icon="@drawable/outline_info_24"
+            android:title="@string/nav_about_covid360"/>
+        <item android:id="@+id/nav_about_360rf"
+            android:icon="@drawable/outline_info_24"
+            android:title="@string/nav_about_360rf"/>
+        <item android:id="@+id/nav_contact_us"
+            android:icon="@drawable/outline_contact_support_24"
+            android:title="@string/nav_contact_us"/>
+        <item android:id="@+id/nav_log_out"
+            android:icon="@drawable/ic_log_out_icon_24"
+            android:title="@string/nav_log_out"/>
+
+    </group>
+
+</menu>

@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!-- main activity menu -->
+    <dimen name="height_of_nav_main">200dp</dimen>
+    <dimen name="nav_image_size">80dp</dimen>
+    <dimen name="nav_content_marginStartEnd">16dp</dimen>
+    <dimen name="nav_content_margin_top">5dp</dimen>
+    <dimen name="nav_content_margin_bottom">10dp</dimen>
+    <dimen name="nav_user_name_text_size">18sp</dimen>
+    <dimen name="nav_image_circular_border_width">1dp</dimen>
+    <dimen name="nav_divider_height">0.5dp</dimen>
+    <dimen name="progress_dialog_content_padding">10dp</dimen>
+    <dimen name="progress_bar_size">50dp</dimen>
+    <dimen name="progress_text_marginStart">10dp</dimen>
+    <dimen name="progress_text_size">18sp</dimen>
+
+    <!-- graph cardView -->
+    <dimen name="card_view_graph_height">180dp</dimen>
+    <dimen name="card_view_content_margin">15dp</dimen>
+    <dimen name="card_view_corner_radius">10dp</dimen>
+    <dimen name="card_view_elevation">10dp</dimen>
+    <dimen name="card_view_graph_margin_top">20dp</dimen>
+    <dimen name="pie_chart_margin">15dp</dimen>
+    <dimen name="pie_chart_padding">6dp</dimen>
+    <dimen name="card_view_pie_chart_ll_left_margin">10dp</dimen>
+    <dimen name="view_size">15dp</dimen>
+    <dimen name="view_text_margin_left">15dp</dimen>
+    <dimen name="text_size_four_heading_card_view">18sp</dimen>
+    <dimen name="margin_left_card_view">10dp</dimen>
+    <dimen name="margin_left_right_ll_horizontal_card_view">10dp</dimen>
+    <dimen name="margin_top_headings_card_view">15dp</dimen>
+    <dimen name="margin_top_for_placeholders_text">5dp</dimen>
+    <dimen name="text_size_number_placeHolders_card_view">24sp</dimen>
+    <dimen name="text_size_all_states_heading">18sp</dimen>
+    <dimen name="margin_left_heading_states">50dp</dimen>
+
+
+</resources>
