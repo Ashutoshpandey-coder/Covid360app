@@ -15,7 +15,7 @@
 
     <string name="image_of_360_research_foundation">Image of 360 Research Foundation</string>
     <string name="nav_logo_text_360_research_foundation">360 Research Foundation</string>
-    <string name="please_wait">Please wait ...</string>
+    <string name="please_wait">Please wait …</string>
     <string name="please_click_back_again_to_exit">Please press again to exit</string>
     <string name="total_cases_text">Total Cases</string>
     <string name="recovered">Recovered</string>
@@ -27,4 +27,20 @@
     <string name="edit_text_hint_search_state">Search states</string>
     <string name="text_view_title_all_states_ut_stats">All States/UT Stats</string>
     <string name="tv_row_state_title">States</string>
+
+    <!-- Intro Activity -->
+    <string name="image_contentDescription">task image</string>
+    <string name="let_s_get_started_text">Let\'s Fight together</string>
+    <string name="intro_text_description">Let\'s Stand Together to Fight Against Covid 19. Stay Home Stay Safe</string>
+    <string name="register">REGISTER</string>
+    <string name="verification_code">Enter OTP(One Time Password)</string>
+    <string name="email">Phone number</string>
+    <string name="sign_up_description_text">Enter your name and phone number to register with us.</string>
+    <string name="name">Name</string>
+    <string name="phoneNumber">Enter 10 digit mobile number</string>
+    <string name="verify">Verify</string>
+    <string name="resend_otp">Resend</string>
+    <string name="please_enter_a_name">Please enter your name</string>
+    <string name="enter_10_digit_phone_number">Please enter your 10 digit phone number</string>
+    <string name="please_enter_code">Please enter 6 digit code</string>
 </resources>

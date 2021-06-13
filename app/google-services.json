@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "533093229039",
+    "project_id": "covid360rf",
+    "storage_bucket": "covid360rf.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:533093229039:android:26594e4917d34764a4d61a",
+        "android_client_info": {
+          "package_name": "covid360rf.covid360"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "533093229039-dbl96snt5hqrrap2sepapqs0c6esm0nt.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "covid360rf.covid360",
+            "certificate_hash": "aaabb03e6323dccdf398c758c2c36617853387eb"
+          }
+        },
+        {
+          "client_id": "533093229039-ts3abn67vhiplac2qgtorohqofqpee81.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC1k1kvEzugQlJF2ab5jbJ_rLoTRAmo9Ss"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "533093229039-ts3abn67vhiplac2qgtorohqofqpee81.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

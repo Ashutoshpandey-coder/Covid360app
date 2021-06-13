@@ -30,12 +30,14 @@
     <color name="active">#29b6f6</color>
     <color name="lightGray">#fafafa</color>
 
+    <color name="colorPrimary">#03A9F4</color>
+    <color name="colorPrimaryDark">#03A9F4</color>
+    <color name="colorAccent">#0288D1</color>
+
     <color name="primaryColor">#00b0ff</color>
     <color name="primaryLightColor">#69e2ff</color>
     <color name="primaryDarkColor">#0081cb</color>
     <color name="secondaryColor">#d500f9</color>
     <color name="secondaryLightColor">#ff5bff</color>
     <color name="secondaryDarkColor">#9e00c5</color>
-    <color name="primaryTextColor">#ffffff</color>
-    <color name="secondaryTextColor">#ffffff</color>
 </resources>

@@ -1,14 +1,13 @@
 package covid360rf.covid360.activities
 
 import android.annotation.SuppressLint
+import android.app.AlertDialog
+import android.content.Intent
 import android.content.SharedPreferences
 import android.graphics.Color
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.MenuItem
-import android.view.View
 import android.widget.LinearLayout
-import android.widget.ScrollView
 import android.widget.TextView
 import android.widget.Toast
 import androidx.core.view.GravityCompat
@@ -19,6 +18,7 @@ import com.android.volley.Request
 import com.android.volley.toolbox.StringRequest
 import com.android.volley.toolbox.Volley
 import com.google.android.material.navigation.NavigationView
+import com.google.firebase.auth.FirebaseAuth
 import covid360rf.covid360.R
 import covid360rf.covid360.adapters.AllStatesCovidAdapter
 import covid360rf.covid360.model.CovidInfo
@@ -46,8 +46,6 @@ class MainActivity : BaseActivity(), NavigationView.OnNavigationItemSelectedList
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-//        @SuppressLint("InflateParams")
-//        val view : View = layoutInflater.inflate(R.layout.main_content,null)
 
         val linearLayout : LinearLayout = findViewById(R.id.linearLayout)
         val view : LinearLayout = linearLayout.findViewById(R.id.main_content)
@@ -129,7 +127,7 @@ class MainActivity : BaseActivity(), NavigationView.OnNavigationItemSelectedList
                 Toast.makeText(this, "Thanks for contacting", Toast.LENGTH_SHORT).show()
             }
             R.id.nav_log_out ->{
-                Toast.makeText(this, "please wait", Toast.LENGTH_SHORT).show()
+                alertDialogLogout()
             }
         }
         mDrawerLayout.closeDrawer(GravityCompat.START)
@@ -173,7 +171,6 @@ class MainActivity : BaseActivity(), NavigationView.OnNavigationItemSelectedList
 
     private fun gettingDataSuccess() {
         hideProgressDialog()
-        Toast.makeText(this, "Hello I am in.", Toast.LENGTH_SHORT).show()
     }
 
     private fun fetchDataAsPerState() {
@@ -203,5 +200,25 @@ class MainActivity : BaseActivity(), NavigationView.OnNavigationItemSelectedList
         }) { error -> Toast.makeText(this, error.message, Toast.LENGTH_SHORT).show() }
         val requestQueue = Volley.newRequestQueue(this)
         requestQueue.add(request)
+    }
+
+    private fun alertDialogLogout() {
+        val builder = AlertDialog.Builder(this)
+        builder.setTitle(getString(R.string.app_name))
+        builder.setMessage("Are you sure you want to Logout?")
+        builder.setIcon(R.drawable.ic_log_out_icon_24)
+        builder.setPositiveButton("Yes") { dialogInterface, _ ->
+            dialogInterface.dismiss()
+            FirebaseAuth.getInstance().signOut()
+            startActivity(Intent(this@MainActivity, IntroActivity::class.java))
+            finish()
+        }
+        builder.setNegativeButton("No") { dialogInterface, _ ->
+            dialogInterface.dismiss()
+        }
+        val alertDialog: AlertDialog = builder.create()
+        alertDialog.setCancelable(false)
+        alertDialog.show()
+
     }
 }

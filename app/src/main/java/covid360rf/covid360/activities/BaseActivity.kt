@@ -1,11 +1,13 @@
 package covid360rf.covid360.activities
 
+import android.app.Activity
 import android.app.Dialog
 import android.os.Bundle
 import android.os.Handler
 import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.widget.Toolbar
 import androidx.core.content.ContextCompat
 import com.google.android.material.snackbar.Snackbar
 import covid360rf.covid360.R
@@ -77,6 +79,18 @@ open class BaseActivity : AppCompatActivity() {
             )
         )
         snackBar.show()
+    }
+     fun setUpActionBar(activity: Activity, toolbar : Toolbar, title : String){
+
+        setSupportActionBar(toolbar)
+        supportActionBar?.title = title
+        supportActionBar?.setDisplayHomeAsUpEnabled(true)
+        supportActionBar?.setHomeAsUpIndicator(R.drawable.ic_white_back_icon_24)
+
+        toolbar.setNavigationOnClickListener {
+            activity.onBackPressed()
+        }
+
     }
 }
 // END
