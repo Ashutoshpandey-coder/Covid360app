@@ -1,19 +1,23 @@
 package covid360rf.covid360.activities
 
-import android.annotation.SuppressLint
 import android.app.AlertDialog
 import android.content.Intent
 import android.content.SharedPreferences
 import android.graphics.Color
 import android.os.Bundle
+import android.text.Editable
+import android.text.TextWatcher
 import android.view.MenuItem
-import android.widget.LinearLayout
+import android.widget.EditText
 import android.widget.TextView
 import android.widget.Toast
+import androidx.coordinatorlayout.widget.CoordinatorLayout
 import androidx.core.view.GravityCompat
+import androidx.core.widget.NestedScrollView
 import androidx.drawerlayout.widget.DrawerLayout
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 import com.android.volley.Request
 import com.android.volley.toolbox.StringRequest
 import com.android.volley.toolbox.Volley
@@ -28,15 +32,17 @@ import org.json.JSONException
 import org.json.JSONObject
 import java.util.ArrayList
 
-class MainActivity : BaseActivity(), NavigationView.OnNavigationItemSelectedListener{
+class MainActivity : BaseActivity(), NavigationView.OnNavigationItemSelectedListener , SwipeRefreshLayout.OnRefreshListener{
     private lateinit var mConfirmedCases : TextView
     private lateinit var mActiveCases : TextView
     private lateinit var mRecoveredCases : TextView
     private lateinit var mDeaths : TextView
+    private lateinit var editSearch : EditText
     private lateinit var mPieChart: PieChart
     private lateinit var mRecyclerView: RecyclerView
     private lateinit var mDrawerLayout: DrawerLayout
     private lateinit var mNavigationView: NavigationView
+    private lateinit var swipeRefreshLayout: SwipeRefreshLayout
     private val stateWiseCovidInfoList = ArrayList<CovidInfo>()
     private lateinit var mSharedPreferences : SharedPreferences
     private lateinit var editor: SharedPreferences.Editor
@@ -47,8 +53,8 @@ class MainActivity : BaseActivity(), NavigationView.OnNavigationItemSelectedList
         setContentView(R.layout.activity_main)
 
 
-        val linearLayout : LinearLayout = findViewById(R.id.linearLayout)
-        val view : LinearLayout = linearLayout.findViewById(R.id.main_content)
+        val linearLayout : CoordinatorLayout = findViewById(R.id.linearLayout)
+        val view : NestedScrollView = linearLayout.findViewById(R.id.main_content)
 
         mConfirmedCases = view.findViewById(R.id.tv_confirmedCases)
         mActiveCases = view.findViewById(R.id.activeCases)
@@ -56,19 +62,58 @@ class MainActivity : BaseActivity(), NavigationView.OnNavigationItemSelectedList
         mDeaths = view.findViewById(R.id.deaths)
         mPieChart = view.findViewById(R.id.pieChart)
         mRecyclerView = view.findViewById(R.id.rv_states_data)
+        editSearch = view.findViewById(R.id.et_search)
         mNavigationView = findViewById(R.id.nav_view)
         mDrawerLayout = findViewById(R.id.drawer_layout)
 
 
         setUpActionBar()
 
-        mSharedPreferences = getSharedPreferences("stored previous data", MODE_PRIVATE)!!
+        swipeRefreshLayout  = linearLayout.findViewById(R.id.swipeRefreshLayout)
+        swipeRefreshLayout.setOnRefreshListener(this)
+
+
+            mSharedPreferences = getSharedPreferences("stored previous data", MODE_PRIVATE)!!
+
+        val confirmedCases = mSharedPreferences.getString("confirmed","")
+        val recoveredCases = mSharedPreferences.getString("recovered","")
+        val deathCases = mSharedPreferences.getString("deaths","")
+        val activeCases = mSharedPreferences.getString("active","")
+
+        mConfirmedCases.text = confirmedCases
+        mRecoveredCases.text = recoveredCases
+        mDeaths.text = deathCases
+        mActiveCases.text = activeCases
+
+        if (!(confirmedCases.isNullOrEmpty() && recoveredCases.isNullOrEmpty() && deathCases.isNullOrEmpty() && activeCases.isNullOrEmpty())){
+        mPieChart.addPieSlice(PieModel("Confirmed", confirmedCases?.toFloat()!!, Color.parseColor("#FFA726")))
+        mPieChart.addPieSlice(PieModel("Recovered", recoveredCases?.toFloat()!!, Color.parseColor("#66BB6A")))
+        mPieChart.addPieSlice(PieModel("Deaths", deathCases?.toFloat()!!, Color.parseColor("#EF5350")))
+        mPieChart.addPieSlice(PieModel("Active", activeCases?.toFloat()!!, Color.parseColor("#29B6F6")))
+            }
+
+        mPieChart.startAnimation()
 
         mNavigationView.setNavigationItemSelectedListener(this)
 
         showProgressDialog(getString(R.string.please_wait))
         fetchDataAllOverIndia()
         fetchDataAsPerState()
+
+        editSearch.addTextChangedListener(object  : TextWatcher{
+            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
+
+            }
+
+            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
+                adapter!!.filter.filter(s)
+                adapter!!.notifyDataSetChanged()
+            }
+
+            override fun afterTextChanged(s: Editable?) {
+            }
+
+        })
     }
     private fun setUpActionBar(){
         val toolbar : androidx.appcompat.widget.Toolbar = findViewById(R.id.toolbar_main_activity)
@@ -100,28 +145,28 @@ class MainActivity : BaseActivity(), NavigationView.OnNavigationItemSelectedList
     override fun onNavigationItemSelected(item: MenuItem): Boolean {
         when(item.itemId){
             R.id.nav_home ->{
-                Toast.makeText(this, "Home is pressed", Toast.LENGTH_SHORT).show()
+
             }
             R.id.nav_precaution ->{
                 Toast.makeText(this, "Precautions", Toast.LENGTH_SHORT).show()
             }
             R.id.nav_test_centres ->{
-                Toast.makeText(this, "Test Centres", Toast.LENGTH_SHORT).show()
+                startActivity(Intent(this@MainActivity,TestsCentresActivity::class.java))
             }
             R.id.nav_vaccination_info ->{
-                Toast.makeText(this, "vaccination", Toast.LENGTH_SHORT).show()
+                startActivity(Intent(this@MainActivity,VaccinationCentresActivity::class.java))
             }
             R.id.nav_self_diagnosis ->{
-                Toast.makeText(this, "Diagnosis", Toast.LENGTH_SHORT).show()
+                startActivity(Intent(this@MainActivity,SelfDiagnosisActivity::class.java))
             }
             R.id.nav_consult_a_doctor ->{
                 Toast.makeText(this, "consult a doctor", Toast.LENGTH_SHORT).show()
             }
             R.id.nav_about_covid360 ->{
-                Toast.makeText(this, "About covid360", Toast.LENGTH_SHORT).show()
+                startActivity(Intent(this@MainActivity,AboutAppActivity::class.java))
             }
             R.id.nav_about_360rf ->{
-                Toast.makeText(this, "About 360rf", Toast.LENGTH_SHORT).show()
+                startActivity(Intent(this@MainActivity,About360rfActivity::class.java))
             }
             R.id.nav_contact_us ->{
                 Toast.makeText(this, "Thanks for contacting", Toast.LENGTH_SHORT).show()
@@ -154,12 +199,12 @@ class MainActivity : BaseActivity(), NavigationView.OnNavigationItemSelectedList
                 mPieChart.startAnimation()
                 gettingDataSuccess()
 
-              /*  editor = mSharedPreferences.edit()
-                editor.putString("confirmed",binding.confirmedCases.text.toString())
-                editor.putString("recovered",binding.recoveredCases.text.toString())
-                editor.putString("deaths",binding.deaths.text.toString())
-                editor.putString("active",binding.activeCases.text.toString())
-                editor.apply()*/
+                editor = mSharedPreferences.edit()
+                editor.putString("confirmed",mConfirmedCases.text.toString())
+                editor.putString("recovered",mRecoveredCases.text.toString())
+                editor.putString("deaths",mDeaths.text.toString())
+                editor.putString("active",mActiveCases.text.toString())
+                editor.apply()
 
             } catch (e: JSONException) {
                 e.printStackTrace()
@@ -220,5 +265,16 @@ class MainActivity : BaseActivity(), NavigationView.OnNavigationItemSelectedList
         alertDialog.setCancelable(false)
         alertDialog.show()
 
+    }
+
+    override fun onRefresh() {
+        swipeRefreshLayout.isRefreshing = true
+        refreshPage()
+    }
+    private fun refreshPage(){
+        showProgressDialog(getString(R.string.please_wait))
+        fetchDataAsPerState()
+        fetchDataAllOverIndia()
+        swipeRefreshLayout.isRefreshing = false
     }
 }

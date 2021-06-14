@@ -4,6 +4,7 @@ import android.content.Context
 import android.graphics.Color
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import android.widget.Filter
 import androidx.recyclerview.widget.RecyclerView
 import covid360rf.covid360.R
 import covid360rf.covid360.databinding.EachRowBinding
@@ -11,6 +12,8 @@ import covid360rf.covid360.model.CovidInfo
 
 class AllStatesCovidAdapter (private val context : Context,
                              private val list : ArrayList<CovidInfo>) : RecyclerView.Adapter<AllStatesCovidAdapter.ViewHolder>() {
+    private var mSearchList : ArrayList<CovidInfo> = ArrayList(list)
+
     class ViewHolder(val binding : EachRowBinding) : RecyclerView.ViewHolder(binding.root)
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val view  = LayoutInflater.from(context).inflate(R.layout.each_row,parent,false)
@@ -31,6 +34,34 @@ class AllStatesCovidAdapter (private val context : Context,
 
     override fun getItemCount(): Int {
         return list.size
+    }
+     @JvmName("getFilter1")
+     fun getFilter(): Filter {
+        return filter
+    }
+
+    var filter: Filter = object : Filter() {
+        override fun performFiltering(constraint: CharSequence): FilterResults {
+            val filteredList = java.util.ArrayList<CovidInfo>()
+            if (constraint.toString().isEmpty()) {
+                filteredList.addAll(mSearchList)
+            } else {
+                for (list in mSearchList) {
+                    if (list.state.lowercase().contains(constraint.toString().lowercase())) {
+                        filteredList.add(list)
+                    }
+                }
+            }
+            val filterResults = FilterResults()
+            filterResults.values = filteredList
+            return filterResults
+        }
+
+        override fun publishResults(constraint: CharSequence, results: FilterResults) {
+            list.clear()
+            list.addAll((results.values as Collection<CovidInfo>))
+            notifyDataSetChanged()
+        }
     }
 
 }
