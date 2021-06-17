@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 
 <androidx.core.widget.NestedScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:id="@+id/main_content"
     android:fillViewport="true"
     android:scrollbars="none"
     android:background="@drawable/ic_background"
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
     tools:context=".activities.MainActivity">
     <LinearLayout
@@ -48,7 +48,6 @@
                         android:layout_height="match_parent"
                         android:layout_weight="1"
                         android:gravity="center_vertical"
-                        android:layout_marginLeft="@dimen/card_view_pie_chart_ll_left_margin"
                         android:layout_marginStart="@dimen/card_view_pie_chart_ll_left_margin"
                         android:orientation="vertical">
 
@@ -66,7 +65,6 @@
                                 android:layout_height="wrap_content"
                                 android:textColor="@color/secondary_text_color"
                                 android:text="@string/total_cases_text"
-                                android:layout_marginLeft="@dimen/view_text_margin_left"
                                 android:layout_marginStart="@dimen/view_text_margin_left" />
                         </LinearLayout>
                         <LinearLayout
@@ -84,7 +82,6 @@
                                 android:layout_height="wrap_content"
                                 android:textColor="@color/secondary_text_color"
                                 android:text="@string/recovered"
-                                android:layout_marginLeft="@dimen/view_text_margin_left"
                                 android:layout_marginStart="@dimen/view_text_margin_left" />
                         </LinearLayout>
                         <LinearLayout
@@ -102,7 +99,6 @@
                                 android:layout_height="wrap_content"
                                 android:textColor="@color/secondary_text_color"
                                 android:text="@string/tv_heading_deaths"
-                                android:layout_marginLeft="@dimen/view_text_margin_left"
                                 android:layout_marginStart="@dimen/view_text_margin_left" />
                         </LinearLayout>
                         <LinearLayout
@@ -120,7 +116,6 @@
                                 android:layout_height="wrap_content"
                                 android:textColor="@color/secondary_text_color"
                                 android:text="@string/tv_heading_active_cases"
-                                android:layout_marginLeft="@dimen/view_text_margin_left"
                                 android:layout_marginStart="@dimen/view_text_margin_left" />
                         </LinearLayout>
 
@@ -150,10 +145,10 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="@string/tv_main_title_cardView"
-                        android:textColor="@color/primary_text_color"
+                        android:textColor="@color/black"
+                        android:textStyle="bold"
                         android:textSize="@dimen/text_size_four_heading_card_view"
                         android:layout_marginTop="15dp"
-                        android:layout_marginLeft="@dimen/margin_left_card_view"
                         android:layout_marginStart="@dimen/margin_left_card_view" />
                     <LinearLayout
                         android:layout_width="match_parent"
@@ -196,7 +191,9 @@
                             tools:text="235980"
                             android:layout_weight="1"
                             android:textColor="@color/active"
-                            android:textSize="@dimen/text_size_number_placeHolders_card_view"/>
+                            android:textSize="@dimen/text_size_number_placeHolders_card_view"
+                            android:ellipsize="end"
+                            android:maxLines="1"/>
                         <TextView
                             android:id="@+id/recoveredCases"
                             android:layout_width="match_parent"
@@ -204,7 +201,9 @@
                             tools:text="23400"
                             android:layout_weight="1"
                             android:textColor="@color/recovered"
-                            android:textSize="@dimen/text_size_number_placeHolders_card_view"/>
+                            android:textSize="@dimen/text_size_number_placeHolders_card_view"
+                            android:ellipsize="end"
+                            android:maxLines="1"/>
 
                     </LinearLayout>
                     <LinearLayout
@@ -248,15 +247,19 @@
                             tools:text="3450"
                             android:layout_weight="1"
                             android:textColor="@color/deaths"
-                            android:textSize="@dimen/text_size_number_placeHolders_card_view"/>
+                            android:textSize="@dimen/text_size_number_placeHolders_card_view"
+                            android:ellipsize="end"
+                            android:maxLines="1"/>
                         <TextView
                             android:id="@+id/tv_confirmedCases"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:text="345689"
+                            tools:text="345689"
                             android:layout_weight="1"
                             android:textColor="@color/confirmed_cases"
-                            android:textSize="@dimen/text_size_number_placeHolders_card_view"/>
+                            android:textSize="@dimen/text_size_number_placeHolders_card_view"
+                            android:ellipsize="end"
+                            android:maxLines="1"/>
 
                     </LinearLayout>
 
@@ -277,12 +280,10 @@
             android:id="@+id/et_search"
             android:layout_width="match_parent"
             android:layout_height="35dp"
-            android:drawableLeft="@drawable/ic_search"
             android:background="@drawable/search_border"
             android:maxLines="1"
             android:drawablePadding="13dp"
             android:hint="@string/edit_text_hint_search_state"
-            android:paddingLeft="8dp"
             android:textSize="14sp"
             android:layout_margin="10dp"
             android:paddingStart="8dp"
@@ -302,44 +303,45 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/margin_left_heading_states"
-            android:orientation="horizontal"
-            android:layout_marginLeft="@dimen/margin_left_heading_states">
+            android:orientation="horizontal">
             <TextView
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:text="@string/tv_heading_active_cases"
-                android:textColor="@color/active"/>
+                android:textColor="@color/active"
+                android:gravity="center"/>
             <TextView
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:text="@string/tv_heading_recovered_cases"
-                android:textColor="@color/recovered"/>
+                android:textColor="@color/recovered"
+                android:gravity="center"/>
             <TextView
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:text="@string/tv_heading_deaths"
-                android:textColor="@color/deaths"/>
+                android:textColor="@color/deaths"
+                android:gravity="center"/>
             <TextView
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:text="@string/tv_heading_confirmed_cases"
-                android:textColor="@color/confirmed_cases"/>
+                android:textColor="@color/confirmed_cases"
+                android:gravity="center"/>
 
         </LinearLayout>
-
-
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rv_states_data"
             android:layout_width="match_parent"
             android:layout_margin="5dp"
             android:background="@drawable/intro_background"
-            android:layout_height="match_parent"/>
+            android:layout_height="match_parent"
+            android:nestedScrollingEnabled="false"/>
 
     </LinearLayout>
 

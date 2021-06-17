@@ -2,8 +2,10 @@ package covid360rf.covid360.activities
 
 import android.app.Activity
 import android.app.Dialog
-import android.os.Bundle
+import android.content.Context
+import android.content.Intent
 import android.os.Handler
+import android.os.Looper
 import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
@@ -20,10 +22,6 @@ open class BaseActivity : AppCompatActivity() {
      * This is a progress dialog instance which we will initialize later on.
      */
     private lateinit var mProgressDialog: Dialog
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-    }
 
     /**
      * This function is used to show the progress dialog with the title and message to user.
@@ -65,7 +63,7 @@ open class BaseActivity : AppCompatActivity() {
             Toast.LENGTH_SHORT
         ).show()
 
-        Handler().postDelayed({ doubleBackToExitPressedOnce = false }, 2000)
+        Handler(Looper.myLooper()!!).postDelayed({ doubleBackToExitPressedOnce = false }, 2000)
     }
 
     fun showErrorSnackBar(message: String) {
@@ -80,8 +78,8 @@ open class BaseActivity : AppCompatActivity() {
         )
         snackBar.show()
     }
-     fun setUpActionBar(activity: Activity, toolbar : Toolbar, title : String){
 
+    fun setUpActionBar(activity: Activity, toolbar: Toolbar, title: String){
         setSupportActionBar(toolbar)
         supportActionBar?.title = title
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
@@ -90,7 +88,5 @@ open class BaseActivity : AppCompatActivity() {
         toolbar.setNavigationOnClickListener {
             activity.onBackPressed()
         }
-
     }
 }
-// END

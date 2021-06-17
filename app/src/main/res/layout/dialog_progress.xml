@@ -6,7 +6,8 @@
     android:layout_height="wrap_content"
     android:gravity="center"
     android:orientation="horizontal"
-    android:padding="@dimen/progress_dialog_content_padding">
+    android:padding="@dimen/progress_dialog_content_padding"
+    android:background="@drawable/rounded_corners">
 
     <ProgressBar
         android:id="@+id/progressBar"

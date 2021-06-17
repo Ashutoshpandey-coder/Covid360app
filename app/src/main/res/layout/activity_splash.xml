@@ -22,12 +22,14 @@
         android:layout_height="150dp"
         android:src="@drawable/splash_screen_logo"
         app:civ_border_color="@android:color/white"
-        app:civ_border_width="@dimen/nav_image_circular_border_width"/>
+        app:civ_border_width="@dimen/nav_image_circular_border_width"
+        android:elevation="@dimen/elevationLarge"
+        android:outlineProvider="bounds"/>
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textSize="32sp"
+        android:textSize="24sp"
         android:textColor="@android:color/white"
         android:layout_marginTop="15dp"
         android:text="@string/app_name"
@@ -43,7 +45,7 @@
         android:text="@string/nav_logo_text_360_research_foundation"
         android:textStyle="bold"
         android:textColor="@android:color/white"
-        android:textSize="24sp"
+        android:textSize="@dimen/textLarge"
         android:layout_marginBottom="20dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"

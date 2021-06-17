@@ -1,6 +1,11 @@
 <resources>
     <string name="app_name">Covid360</string>
 
+    <string name="developed_by">Developed by &#160;</string>
+    <string name="app_devs">%s</string>
+    <string name="back">Back</string>
+    <string name="refresh">Refresh</string>
+
     <string name="nav_home">Home</string>
     <string name="nav_precautions">Precautions</string>
     <string name="nav_test_centres">Test Centres</string>
@@ -15,7 +20,7 @@
 
     <string name="image_of_360_research_foundation">Image of 360 Research Foundation</string>
     <string name="nav_logo_text_360_research_foundation">360 Research Foundation</string>
-    <string name="please_wait">Please wait …</string>
+    <string name="please_wait">Please wait…</string>
     <string name="please_click_back_again_to_exit">Please press again to exit</string>
     <string name="total_cases_text">Total Cases</string>
     <string name="recovered">Recovered</string>
