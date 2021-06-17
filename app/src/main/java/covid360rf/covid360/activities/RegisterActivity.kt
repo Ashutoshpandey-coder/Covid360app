@@ -163,6 +163,7 @@ class RegisterActivity : BaseActivity() {
     }
 
     private fun signInWithPhoneNumberAuthCredential(credential: PhoneAuthCredential) {
+        showProgressDialog(getString(R.string.please_wait))
 
         firebaseAuth.signInWithCredential(credential)
             .addOnSuccessListener {
@@ -173,6 +174,7 @@ class RegisterActivity : BaseActivity() {
                 intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK
                 startActivity(intent)
                 finish()
+                hideProgressDialog()
             }.addOnFailureListener { e ->
                 hideProgressDialog()
                 Toast.makeText(
