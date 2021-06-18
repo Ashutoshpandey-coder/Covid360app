@@ -29,7 +29,6 @@ class SplashActivity : AppCompatActivity() {
             )
         }
 
-
         Handler(Looper.myLooper()!!).postDelayed({
             if (FirebaseAuth.getInstance().currentUser == null) {
                 start(IntroActivity::class.java)
@@ -38,7 +37,8 @@ class SplashActivity : AppCompatActivity() {
             }
 
             /**
-             * While developing on app, Navigate directly to MainActivity instead of authenticating phone
+             * While developing on app, Navigate directly to MainActivity
+             * ...instead of authenticating phone
              * start(MainActivity::class.java)
              */
             finish()

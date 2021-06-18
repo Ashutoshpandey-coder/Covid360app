@@ -74,15 +74,15 @@ class MainActivity : BaseActivity(), NavigationView.OnNavigationItemSelectedList
 
         mSharedPreferences = getSharedPreferences("stored previous data", MODE_PRIVATE)!!
 
-        val confirmedCases = mSharedPreferences.getString("confirmed","")
-        val recoveredCases = mSharedPreferences.getString("recovered","")
-        val deathCases = mSharedPreferences.getString("deaths","")
-        val activeCases = mSharedPreferences.getString("active","")
+        val confirmedCases = mSharedPreferences.getString("confirmed","0")
+        val recoveredCases = mSharedPreferences.getString("recovered","0")
+        val deathCases = mSharedPreferences.getString("deaths","0")
+        val activeCases = mSharedPreferences.getString("active","0")
 
-        mConfirmedCases.text = confirmedCases?.toLong()?.let { formatLargeNumber(it) }
-        mRecoveredCases.text = recoveredCases?.toLong()?.let { formatLargeNumber(it) }
-        mDeaths.text = deathCases?.toLong()?.let { formatLargeNumber(it) }
-        mActiveCases.text = activeCases?.toLong()?.let { formatLargeNumber(it) }
+        mConfirmedCases.text = confirmedCases
+        mRecoveredCases.text = recoveredCases
+        mDeaths.text = deathCases
+        mActiveCases.text = activeCases
 
         if (!(confirmedCases.isNullOrEmpty() && recoveredCases.isNullOrEmpty() && deathCases.isNullOrEmpty() && activeCases.isNullOrEmpty())){
         mPieChart.addPieSlice(PieModel("Confirmed", confirmedCases?.toFloat()!!, Color.parseColor("#FFA726")))
@@ -188,7 +188,7 @@ class MainActivity : BaseActivity(), NavigationView.OnNavigationItemSelectedList
 
                 mPieChart.clearAnimation()
                 mPieChart.clearChart()
-                mPieChart.addPieSlice(PieModel("Confirmed", mConfirmedCases.text.toString().toFloat(), Color.parseColor("#FFA726")))
+                mPieChart.addPieSlice(PieModel("Confirmed", mRecoveredCases.text.toString().toFloat()-mConfirmedCases.text.toString().toFloat(), Color.parseColor("#FFA726")))
                 mPieChart.addPieSlice(PieModel("Recovered", mRecoveredCases.text.toString().toFloat(), Color.parseColor("#66BB6A")))
                 mPieChart.addPieSlice(PieModel("Deaths", mDeaths.text.toString().toFloat(), Color.parseColor("#EF5350")))
                 mPieChart.addPieSlice(PieModel("Active", mActiveCases.text.toString().toFloat(), Color.parseColor("#29B6F6")))
@@ -196,17 +196,17 @@ class MainActivity : BaseActivity(), NavigationView.OnNavigationItemSelectedList
                 mPieChart.startAnimation()
                 gettingDataSuccess()
 
-                mConfirmedCases.text = formatLargeNumber((mConfirmedCases.text as String).toLong())
-                mActiveCases.text = formatLargeNumber((mActiveCases.text as String).toLong())
-                mRecoveredCases.text = formatLargeNumber((mRecoveredCases.text as String).toLong())
-                mDeaths.text = formatLargeNumber((mDeaths.text as String).toLong())
-
                 editor = mSharedPreferences.edit()
                 editor.putString("confirmed",mConfirmedCases.text.toString())
                 editor.putString("recovered",mRecoveredCases.text.toString())
                 editor.putString("deaths",mDeaths.text.toString())
                 editor.putString("active",mActiveCases.text.toString())
                 editor.apply()
+
+                mConfirmedCases.text = formatLargeNumber((mConfirmedCases.text as String).toLong())
+                mActiveCases.text = formatLargeNumber((mActiveCases.text as String).toLong())
+                mRecoveredCases.text = formatLargeNumber((mRecoveredCases.text as String).toLong())
+                mDeaths.text = formatLargeNumber((mDeaths.text as String).toLong())
 
             } catch (e: JSONException) {
                 e.printStackTrace()
