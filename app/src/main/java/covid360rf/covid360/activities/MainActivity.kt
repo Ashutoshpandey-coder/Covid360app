@@ -145,7 +145,7 @@ class MainActivity : BaseActivity(), NavigationView.OnNavigationItemSelectedList
         when(item.itemId){
             R.id.nav_home ->{ }
             R.id.nav_precaution ->{
-                toast("Precautions")
+                start(PrecautionsActivity::class.java)
             }
             R.id.nav_test_centres ->{
                 start(TestsCentresActivity::class.java)

@@ -25,44 +25,42 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
-        <activity android:name=".activities.SelfDiagnosisActivity"
+        <activity
+            android:name=".activities.SelfDiagnosisActivity"
             android:screenOrientation="portrait"
-            tools:ignore="LockedOrientationActivity"/>
-
-        <activity android:name=".activities.TestsCentresActivity"
+            tools:ignore="LockedOrientationActivity" />
+        <activity
+            android:name=".activities.TestsCentresActivity"
             android:screenOrientation="portrait"
-            tools:ignore="LockedOrientationActivity"/>
-
-        <activity android:name=".activities.VaccinationCentresActivity"
+            tools:ignore="LockedOrientationActivity" />
+        <activity
+            android:name=".activities.VaccinationCentresActivity"
             android:screenOrientation="portrait"
-            tools:ignore="LockedOrientationActivity"/>
-
-        <activity android:name=".activities.About360rfActivity"
+            tools:ignore="LockedOrientationActivity" />
+        <activity
+            android:name=".activities.About360rfActivity"
             android:screenOrientation="portrait"
-            tools:ignore="LockedOrientationActivity"/>
-
-        <activity android:name=".activities.AboutAppActivity"
+            tools:ignore="LockedOrientationActivity" />
+        <activity
+            android:name=".activities.AboutAppActivity"
             android:screenOrientation="portrait"
-            tools:ignore="LockedOrientationActivity"/>
-
+            tools:ignore="LockedOrientationActivity" />
         <activity
             android:name=".activities.RegisterActivity"
             android:screenOrientation="portrait"
             tools:ignore="LockedOrientationActivity" />
-
         <activity
             android:name=".activities.IntroActivity"
             android:screenOrientation="portrait"
             tools:ignore="LockedOrientationActivity" />
-
         <activity android:name=".activities.BaseActivity" />
-
         <activity
             android:name=".activities.MainActivity"
             android:screenOrientation="portrait"
-            tools:ignore="LockedOrientationActivity"
-            android:windowSoftInputMode="stateHidden"/>
+            android:windowSoftInputMode="stateHidden"
+            tools:ignore="LockedOrientationActivity" />
+
+        <activity android:name=".activities.PrecautionsActivity"/>
     </application>
 
 </manifest>

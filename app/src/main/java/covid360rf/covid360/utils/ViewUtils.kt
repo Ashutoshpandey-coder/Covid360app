@@ -7,8 +7,8 @@ import android.widget.Toast
 import kotlin.math.abs
 import kotlin.math.log10
 
-fun Context.toast(message:String, length:Int = 0){
-    Toast.makeText(this, message, length).show()
+fun Context.toast(message:String, duration:Int = 0){
+    Toast.makeText(this, message, duration).show()
 }
 
 fun Context.start(destination: Class<*>) {

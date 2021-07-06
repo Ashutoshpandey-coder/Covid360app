@@ -16,6 +16,4 @@ class About360rfActivity : BaseActivity() {
         setUpActionBar(this,findViewById(R.id.toolbar),getString(R.string.nav_about_360rf))
 
     }
-
-
 }

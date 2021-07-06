@@ -17,40 +17,38 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        android:padding="@dimen/paddingSmall">
-
+        android:paddingTop="4dp"
+        android:paddingBottom="4dp"
+        android:paddingStart="@dimen/margin_left_heading_states"
+        tools:ignore="RtlSymmetry">
         <TextView
             android:id="@+id/tv_active"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             tools:text="12000"
-            android:textColor="@color/active"
-            android:gravity="center"/>
+            android:textColor="@color/active"/>
         <TextView
             android:id="@+id/tv_recovered"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             tools:text="40005"
-            android:textColor="@color/recovered"
-            android:gravity="center"/>
+            android:textColor="@color/recovered"/>
         <TextView
             android:id="@+id/tv_deaths"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             tools:text="3425"
-            android:textColor="@color/deaths"
-            android:gravity="center"/>
+            android:textColor="@color/deaths"/>
         <TextView
             android:id="@+id/tv_confirmed"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             tools:text="45789"
-            android:textColor="@color/confirmed_cases"
-            android:gravity="center"/>
+            android:textColor="@color/confirmed_cases"/>
 
     </LinearLayout>
 

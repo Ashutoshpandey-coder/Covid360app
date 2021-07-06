@@ -63,7 +63,6 @@
     <dimen name="authentication_screen_til_marginTop">20dp</dimen>
     <dimen name="et_text_size">16sp</dimen>
 
-
     <dimen name="touchAreaSmall">48dp</dimen>
     <dimen name="touchAreaLarge">96dp</dimen>
 
@@ -77,6 +76,8 @@
 
     <dimen name="marginSmall">4dp</dimen>
     <dimen name="marginLarge">8dp</dimen>
+    <dimen name="marginXLarge">16dp</dimen>
+    <dimen name="marginXXLarge">24dp</dimen>
 
     <dimen name="elevationSmall">4dp</dimen>
     <dimen name="elevationLarge">8dp</dimen>
