@@ -1,16 +1,18 @@
 package covid360rf.covid360.activities
 
-import android.content.Intent
 import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.WindowInsets
 import android.view.WindowManager
 import covid360rf.covid360.databinding.ActivityIntroBinding
+import covid360rf.covid360.utils.start
 
 
 class IntroActivity : AppCompatActivity() {
+    
     private lateinit var binding : ActivityIntroBinding
+    
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityIntroBinding.inflate(layoutInflater)
@@ -27,7 +29,8 @@ class IntroActivity : AppCompatActivity() {
         }
 
         binding.btnRegisterIntro.setOnClickListener {
-            startActivity(Intent(this, RegisterActivity::class.java))
+            start(RegisterActivity::class.java)
+            finish()
         }
     }
 }

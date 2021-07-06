@@ -27,7 +27,8 @@
         android:layout_marginBottom="@dimen/nav_content_margin_bottom"
         android:textColor="@android:color/white"
         android:textSize="@dimen/nav_user_name_text_size"
-        android:text="@string/nav_logo_text_360_research_foundation"/>
+        android:text="@string/nav_logo_text_360_research_foundation"
+        android:textStyle="bold"/>
     <View
         android:layout_width="match_parent"
         android:layout_height="@dimen/nav_divider_height"

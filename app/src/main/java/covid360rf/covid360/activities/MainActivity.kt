@@ -1,7 +1,6 @@
 package covid360rf.covid360.activities
 
 import android.app.AlertDialog
-import android.content.Intent
 import android.content.SharedPreferences
 import android.graphics.Color
 import android.os.Bundle
@@ -10,7 +9,6 @@ import android.text.TextWatcher
 import android.view.MenuItem
 import android.widget.EditText
 import android.widget.TextView
-import android.widget.Toast
 import androidx.coordinatorlayout.widget.CoordinatorLayout
 import androidx.core.view.GravityCompat
 import androidx.core.widget.NestedScrollView
@@ -26,11 +24,14 @@ import com.google.firebase.auth.FirebaseAuth
 import covid360rf.covid360.R
 import covid360rf.covid360.adapters.AllStatesCovidAdapter
 import covid360rf.covid360.model.CovidInfo
+import covid360rf.covid360.utils.formatLargeNumber
+import covid360rf.covid360.utils.start
+import covid360rf.covid360.utils.toast
 import org.eazegraph.lib.charts.PieChart
 import org.eazegraph.lib.models.PieModel
 import org.json.JSONException
 import org.json.JSONObject
-import java.util.ArrayList
+import java.util.*
 
 class MainActivity : BaseActivity(), NavigationView.OnNavigationItemSelectedListener , SwipeRefreshLayout.OnRefreshListener{
     private lateinit var mConfirmedCases : TextView
@@ -52,7 +53,6 @@ class MainActivity : BaseActivity(), NavigationView.OnNavigationItemSelectedList
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-
         val linearLayout : CoordinatorLayout = findViewById(R.id.linearLayout)
         val view : NestedScrollView = linearLayout.findViewById(R.id.main_content)
 
@@ -72,13 +72,12 @@ class MainActivity : BaseActivity(), NavigationView.OnNavigationItemSelectedList
         swipeRefreshLayout  = linearLayout.findViewById(R.id.swipeRefreshLayout)
         swipeRefreshLayout.setOnRefreshListener(this)
 
+        mSharedPreferences = getSharedPreferences("stored previous data", MODE_PRIVATE)!!
 
-            mSharedPreferences = getSharedPreferences("stored previous data", MODE_PRIVATE)!!
-
-        val confirmedCases = mSharedPreferences.getString("confirmed","")
-        val recoveredCases = mSharedPreferences.getString("recovered","")
-        val deathCases = mSharedPreferences.getString("deaths","")
-        val activeCases = mSharedPreferences.getString("active","")
+        val confirmedCases = mSharedPreferences.getString("confirmed","0")
+        val recoveredCases = mSharedPreferences.getString("recovered","0")
+        val deathCases = mSharedPreferences.getString("deaths","0")
+        val activeCases = mSharedPreferences.getString("active","0")
 
         mConfirmedCases.text = confirmedCases
         mRecoveredCases.text = recoveredCases
@@ -116,7 +115,7 @@ class MainActivity : BaseActivity(), NavigationView.OnNavigationItemSelectedList
         })
     }
     private fun setUpActionBar(){
-        val toolbar : androidx.appcompat.widget.Toolbar = findViewById(R.id.toolbar_main_activity)
+        val toolbar : androidx.appcompat.widget.Toolbar = findViewById(R.id.toolbar)
         setSupportActionBar(toolbar)
         toolbar.setNavigationIcon(R.drawable.ic_action_navigation_menu)
         supportActionBar?.title = getString(R.string.app_name)
@@ -144,32 +143,30 @@ class MainActivity : BaseActivity(), NavigationView.OnNavigationItemSelectedList
 
     override fun onNavigationItemSelected(item: MenuItem): Boolean {
         when(item.itemId){
-            R.id.nav_home ->{
-
-            }
+            R.id.nav_home ->{ }
             R.id.nav_precaution ->{
-                Toast.makeText(this, "Precautions", Toast.LENGTH_SHORT).show()
+                start(PrecautionsActivity::class.java)
             }
             R.id.nav_test_centres ->{
-                startActivity(Intent(this@MainActivity,TestsCentresActivity::class.java))
+                start(TestsCentresActivity::class.java)
             }
             R.id.nav_vaccination_info ->{
-                startActivity(Intent(this@MainActivity,VaccinationCentresActivity::class.java))
+                start(VaccinationCentresActivity::class.java)
             }
             R.id.nav_self_diagnosis ->{
-                startActivity(Intent(this@MainActivity,SelfDiagnosisActivity::class.java))
+                start(SelfDiagnosisActivity::class.java)
             }
             R.id.nav_consult_a_doctor ->{
-                Toast.makeText(this, "consult a doctor", Toast.LENGTH_SHORT).show()
+                toast("consult a doctor")
             }
             R.id.nav_about_covid360 ->{
-                startActivity(Intent(this@MainActivity,AboutAppActivity::class.java))
+                start(AboutAppActivity::class.java)
             }
             R.id.nav_about_360rf ->{
-                startActivity(Intent(this@MainActivity,About360rfActivity::class.java))
+                start(About360rfActivity::class.java)
             }
             R.id.nav_contact_us ->{
-                Toast.makeText(this, "Thanks for contacting", Toast.LENGTH_SHORT).show()
+                toast("Thanks for contacting")
             }
             R.id.nav_log_out ->{
                 alertDialogLogout()
@@ -191,7 +188,7 @@ class MainActivity : BaseActivity(), NavigationView.OnNavigationItemSelectedList
 
                 mPieChart.clearAnimation()
                 mPieChart.clearChart()
-                mPieChart.addPieSlice(PieModel("Confirmed", mConfirmedCases.text.toString().toFloat(), Color.parseColor("#FFA726")))
+                mPieChart.addPieSlice(PieModel("Confirmed", mRecoveredCases.text.toString().toFloat()-mConfirmedCases.text.toString().toFloat(), Color.parseColor("#FFA726")))
                 mPieChart.addPieSlice(PieModel("Recovered", mRecoveredCases.text.toString().toFloat(), Color.parseColor("#66BB6A")))
                 mPieChart.addPieSlice(PieModel("Deaths", mDeaths.text.toString().toFloat(), Color.parseColor("#EF5350")))
                 mPieChart.addPieSlice(PieModel("Active", mActiveCases.text.toString().toFloat(), Color.parseColor("#29B6F6")))
@@ -206,10 +203,15 @@ class MainActivity : BaseActivity(), NavigationView.OnNavigationItemSelectedList
                 editor.putString("active",mActiveCases.text.toString())
                 editor.apply()
 
+                mConfirmedCases.text = formatLargeNumber((mConfirmedCases.text as String).toLong())
+                mActiveCases.text = formatLargeNumber((mActiveCases.text as String).toLong())
+                mRecoveredCases.text = formatLargeNumber((mRecoveredCases.text as String).toLong())
+                mDeaths.text = formatLargeNumber((mDeaths.text as String).toLong())
+
             } catch (e: JSONException) {
                 e.printStackTrace()
             }
-        }) { error -> Toast.makeText(this, error.message, Toast.LENGTH_SHORT).show() }
+        }) { error -> toast(error.message.toString()) }
         val requestQueue = Volley.newRequestQueue(this)
         requestQueue.add(request)
     }
@@ -227,22 +229,23 @@ class MainActivity : BaseActivity(), NavigationView.OnNavigationItemSelectedList
                 for (i in 1 until stateWise.length()) {
                     val jsonObject = stateWise.getJSONObject(i)
                     val stateName = jsonObject.getString("state")
-                    val activeCases = jsonObject.getString("active")
-                    val deaths = jsonObject.getString("deaths")
-                    val recoveredCases = jsonObject.getString("recovered")
-                    val confirmedCases = jsonObject.getString("confirmed")
+                    val activeCases = jsonObject.getString("active").toLong().let { formatLargeNumber(it) }
+                    val deaths = jsonObject.getString("deaths").toLong().let { formatLargeNumber(it) }
+                    val recoveredCases = jsonObject.getString("recovered").toLong().let { formatLargeNumber(it) }
+                    val confirmedCases = jsonObject.getString("confirmed").toLong().let { formatLargeNumber(it) }
                     val model = CovidInfo(stateName, activeCases, deaths, confirmedCases, recoveredCases)
                     stateWiseCovidInfoList.add(model)
                 }
                 adapter = AllStatesCovidAdapter(this,stateWiseCovidInfoList)
                 val linearLayoutManager = LinearLayoutManager(this)
                 mRecyclerView.layoutManager = linearLayoutManager
+                mRecyclerView.setHasFixedSize(true)
                 mRecyclerView.isNestedScrollingEnabled = false
                 mRecyclerView.adapter = adapter
             } catch (e: JSONException) {
                 e.printStackTrace()
             }
-        }) { error -> Toast.makeText(this, error.message, Toast.LENGTH_SHORT).show() }
+        }) { error -> toast(error.message.toString())  }
         val requestQueue = Volley.newRequestQueue(this)
         requestQueue.add(request)
     }
@@ -255,7 +258,7 @@ class MainActivity : BaseActivity(), NavigationView.OnNavigationItemSelectedList
         builder.setPositiveButton("Yes") { dialogInterface, _ ->
             dialogInterface.dismiss()
             FirebaseAuth.getInstance().signOut()
-            startActivity(Intent(this@MainActivity, IntroActivity::class.java))
+            start(IntroActivity::class.java)
             finish()
         }
         builder.setNegativeButton("No") { dialogInterface, _ ->

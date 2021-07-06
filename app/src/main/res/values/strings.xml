@@ -1,6 +1,11 @@
 <resources>
     <string name="app_name">Covid360</string>
 
+    <string name="developed_by">Developed by &#160;</string>
+    <string name="app_devs">%s</string>
+    <string name="back">Back</string>
+    <string name="refresh">Refresh</string>
+
     <string name="nav_home">Home</string>
     <string name="nav_precautions">Precautions</string>
     <string name="nav_test_centres">Test Centres</string>
@@ -15,7 +20,7 @@
 
     <string name="image_of_360_research_foundation">Image of 360 Research Foundation</string>
     <string name="nav_logo_text_360_research_foundation">360 Research Foundation</string>
-    <string name="please_wait">Please wait …</string>
+    <string name="please_wait">Please wait…</string>
     <string name="please_click_back_again_to_exit">Please press again to exit</string>
     <string name="total_cases_text">Total Cases</string>
     <string name="recovered">Recovered</string>
@@ -43,4 +48,8 @@
     <string name="please_enter_a_name">Please enter your name</string>
     <string name="enter_10_digit_phone_number">Please enter your 10 digit phone number</string>
     <string name="please_enter_code">Please enter 6 digit code</string>
+
+    <string name="about_foundation">
+        The 360 Research Foundation (360RF) is a National level initiative to promote and facilitate the grassroots researches and technological innovations with collaborative and interdisciplinary research and enhancement of research networking capacity and infrastructure. Its mission is to help researchers, innovators and creative minds in the field if empowerment and livelihood. 360 RF scouts, supports, educates, provides training in research and related skills and spawns’ researches and innovations developed by individuals, local team and communities in any field, helping in human survival and scientific research. 360  has proved that grassroots innovators can match anyone in the world when it comes to solving problems creatively. They perform better than others in generating greater sustainable alternatives by using local resources frugally. Those who see poor only as the consumers of cheap goods, miss the richness of knowledge at grassroots level and their potential as provider of ideas and innovations.
+    </string>
 </resources>

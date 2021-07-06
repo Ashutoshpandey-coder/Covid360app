@@ -15,6 +15,7 @@ class AllStatesCovidAdapter (private val context : Context,
     private var mSearchList : ArrayList<CovidInfo> = ArrayList(list)
 
     class ViewHolder(val binding : EachRowBinding) : RecyclerView.ViewHolder(binding.root)
+
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val view  = LayoutInflater.from(context).inflate(R.layout.each_row,parent,false)
         return ViewHolder(EachRowBinding.bind(view))

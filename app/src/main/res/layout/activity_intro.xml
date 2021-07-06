@@ -21,7 +21,7 @@
             android:layout_marginTop="@dimen/intro_screen_title_text_marginTop"
             android:text="@string/app_name"
             android:textColor="@color/colorPrimaryDark"
-            android:textSize="@dimen/intro_screen_title_text_size"
+            android:textSize="24sp"
             android:textStyle="bold" />
 
         <ImageView
@@ -30,7 +30,9 @@
             android:layout_marginTop="@dimen/intro_screen_image_marginTop"
             android:contentDescription="@string/image_contentDescription"
             android:scaleType="centerCrop"
-            android:src="@drawable/intro_activity_neww_image" />
+            android:src="@drawable/intro_activity_neww_image"
+            android:outlineProvider="bounds"
+            android:elevation="@dimen/elevationLarge"/>
 
         <TextView
             android:layout_width="wrap_content"
@@ -38,7 +40,7 @@
             android:layout_marginTop="@dimen/lets_get_started_text_marginTop"
             android:text="@string/let_s_get_started_text"
             android:textColor="@color/secondary_text_color"
-            android:textSize="@dimen/lets_get_started_text_size"
+            android:textSize="@dimen/textLarge"
             android:textStyle="bold" />
 
         <TextView
@@ -50,7 +52,7 @@
             android:lineSpacingExtra="@dimen/intro_text_line_spacing_extra"
             android:text="@string/intro_text_description"
             android:gravity="center"
-            android:textSize="@dimen/intro_text_size" />
+            android:textSize="@dimen/textSmall" />
 
 
         <Button
@@ -67,7 +69,8 @@
             android:textColor="@color/colorPrimary"
             android:textSize="@dimen/btn_text_size"
             android:textStyle="bold"
-            app:backgroundTint="@null" />
+            app:backgroundTint="@null"
+            android:fontFamily="@font/raleway_medium"/>
 
     </LinearLayout>
 </ScrollView>

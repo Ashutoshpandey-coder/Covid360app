@@ -1,14 +1,12 @@
 package covid360rf.covid360.activities
 
 import android.annotation.SuppressLint
-import android.app.AlertDialog
 import android.content.Intent
 import android.os.Bundle
 import android.os.CountDownTimer
 import android.text.TextUtils
 import android.util.Log
 import android.view.View
-import android.widget.Toast
 import com.google.firebase.FirebaseException
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.PhoneAuthCredential
@@ -16,6 +14,7 @@ import com.google.firebase.auth.PhoneAuthOptions
 import com.google.firebase.auth.PhoneAuthProvider
 import covid360rf.covid360.R
 import covid360rf.covid360.databinding.ActivityRegisterBinding
+import covid360rf.covid360.utils.toast
 import java.util.concurrent.TimeUnit
 
 
@@ -52,8 +51,7 @@ class RegisterActivity : BaseActivity() {
             }
 
             override fun onVerificationFailed(e: FirebaseException) {
-                Toast.makeText(this@RegisterActivity, e.message.toString(), Toast.LENGTH_SHORT)
-                    .show()
+                toast(e.message.toString())
                 Log.e("Error", e.message.toString())
             }
 
@@ -73,11 +71,7 @@ class RegisterActivity : BaseActivity() {
                 binding.cvSignUp.visibility = View.GONE
                 binding.cvVerify.visibility = View.VISIBLE
 
-                Toast.makeText(
-                    this@RegisterActivity,
-                    "Verification code sent successfully",
-                    Toast.LENGTH_SHORT
-                ).show()
+                toast("Verification code sent successfully")
                 setUpActionBar("Verification Code")
             }
 
@@ -102,8 +96,7 @@ class RegisterActivity : BaseActivity() {
             //input verification code
             val code = binding.etOtpCode.text.toString().trim()
             if (TextUtils.isEmpty(code)) {
-                Toast.makeText(this, getString(R.string.please_enter_code), Toast.LENGTH_SHORT)
-                    .show()
+                toast(getString(R.string.please_enter_code))
             } else {
                 showProgressDialog(getString(R.string.please_wait))
                 verifyPhoneNumberWithCode(mVerificationId!!, code)
@@ -167,7 +160,7 @@ class RegisterActivity : BaseActivity() {
         firebaseAuth.signInWithCredential(credential)
             .addOnSuccessListener {
 //                val phone = firebaseAuth.currentUser!!.phoneNumber
-                Toast.makeText(this, "Thank you for registering with us", Toast.LENGTH_SHORT).show()
+                toast("Thank you for registering with us")
                 val intent = Intent(this, MainActivity::class.java)
                 intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TASK
                 intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK
@@ -175,9 +168,7 @@ class RegisterActivity : BaseActivity() {
                 finish()
             }.addOnFailureListener { e ->
                 hideProgressDialog()
-                Toast.makeText(
-                    this, e.message.toString(), Toast.LENGTH_SHORT
-                ).show()
+                toast(e.message.toString())
                 Log.e("Error", e.message.toString())
 
             }
