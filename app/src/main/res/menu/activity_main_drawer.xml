@@ -5,6 +5,9 @@
         <item android:id="@+id/nav_home"
             android:icon="@drawable/ic_home_icon_24"
             android:title="@string/nav_home"/>
+        <item android:id="@+id/action_profile"
+            android:icon="@drawable/ic_profile_24"
+            android:title="@string/profile"/>
         <item android:id="@+id/nav_precaution"
             android:icon="@drawable/outline_report_problem_24"
             android:title="@string/nav_precautions"/>
@@ -26,6 +29,9 @@
         <item android:id="@+id/nav_about_360rf"
             android:icon="@drawable/outline_info_24"
             android:title="@string/nav_about_360rf"/>
+        <item  android:id="@+id/action_faq"
+            android:icon="@drawable/faq_icon_24"
+            android:title="@string/faq"/>
         <item android:id="@+id/nav_contact_us"
             android:icon="@drawable/outline_contact_support_24"
             android:title="@string/nav_contact_us"/>

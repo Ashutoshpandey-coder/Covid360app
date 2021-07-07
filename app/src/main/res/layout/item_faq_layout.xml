@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_margin="2dp"
+    android:layout_height="wrap_content">
+    <TextView
+        android:id="@+id/tv_question"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        android:textColor="@color/primary_text_color"
+        tools:text="What is Covid 19 ?"
+        android:textAllCaps="false"
+        android:padding="3dp"/>
+    <TextView
+        android:id="@+id/tv_answer"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        tools:text="Covid 19 is a deady virus. This is very "
+        android:textStyle="normal"
+        android:textSize="18sp"
+        android:textColor="@color/secondary_text_color"
+        android:textAllCaps="false"
+        android:padding="3dp"/>
+
+</LinearLayout>

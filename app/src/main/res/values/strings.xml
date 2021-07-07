@@ -34,7 +34,7 @@
     <string name="intro_text_description">Let\'s Stand Together to Fight Against Covid 19. Stay Home Stay Safe</string>
     <string name="register">REGISTER</string>
     <string name="verification_code">Enter OTP(One Time Password)</string>
-    <string name="email">Phone number</string>
+    <string name="phone">Phone number</string>
     <string name="sign_up_description_text">Enter your name and phone number to register with us.</string>
     <string name="name">Name</string>
     <string name="phoneNumber">Enter 10 digit mobile number</string>
@@ -43,4 +43,57 @@
     <string name="please_enter_a_name">Please enter your name</string>
     <string name="enter_10_digit_phone_number">Please enter your 10 digit phone number</string>
     <string name="please_enter_code">Please enter 6 digit code</string>
+    <string name="profile">Profile</string>
+    <string name="profile_update_btn_text">Update</string>
+    <string name="et_hint_address">Address</string>
+    <string name="faq">FAQ</string>
+
+    <!-- FAQ Questions and answers -->
+    <string name="question_one">What is corona virus?</string>
+    <string name="question_two">What is COVID-19?</string>
+    <string name="question_three">What are the symptoms of COVID-19?</string>
+    <string name="question_four">How does COVID-19 spread?</string>
+    <string name="question_five">Can the virus that causes COVID-19 be transmitted through the air?</string>
+    <string name="question_six">Can CoVID-19 be caught from a person who has no symptoms?</string>
+    <string name="question_seven">Can I catch COVID-19 from the feces of someone with the disease?</string>
+    <string name="question_eight">What can I do to protect myself and prevent the spread of disease?</string>
+    <string name="question_nine">Which precautions can I follow ?</string>
+    <string name="question_ten">Protection measures for persons who are in or have recently visited (past
+14 days) areas where COVID-19 is spreading</string>
+    <string name="question_eleven">How likely am I to catch COVID-19?</string>
+    <string name="question_twelve">Should I worry about COVID-19?</string>
+    <string name="question_thirteen">Who is at risk of developing severe illness?</string>
+    <string name="question_fourteen">Are antibiotics effective in preventing or treating the COVID-19?</string>
+    <string name="question_fifteen">Are there any medicines or therapies that can prevent or cure
+COVID-19?</string>
+
+    <!--Answers -->
+    <string name="answer_one">Corona viruses are a large family of viruses which may cause illness
+        in animals or humans. In humans, several coronaviruses are known
+        to cause respiratory infections ranging from the common cold to more
+        severe diseases such as Middle East Respiratory Syndrome (MERS)
+        and Severe Acute Respiratory Syndrome (SARS). The most recently
+        discovered coronavirus causes coronavirus disease COVID-19.</string>
+    <string name="answer_two">COVID-19 is the infectious disease caused by the most recently
+        discovered corona virus. This new virus and disease were unknown
+        before the outbreak began in Wuhan, China, in December 2019.</string>
+    <string name="answer_three">The most common symptoms of COVID-19 are fever, tiredness, and dry cough. Some patients may have aches and pains, nasal congestion, runny nose, sore throat or diarrhea. These symptoms are usually mild and begin gradually. Some people become infected but don’t develop any symptoms and don\'t feel unwell. Most people (about 80%) recover from the disease without needing special treatment. Around 1 out of every 6 people who gets COVID-19 becomes seriously ill and develops difficulty breathing. Older people, and those with underlying medical problems like high blood pressure, heart problems or diabetes, are more likely to develop serious illness. People with fever, cough and difficulty breathing should seek medical attention.</string>
+    <string name="answer_four">People can catch COVID-19 from others who have the virus. The disease can spread from person to person through small droplets from the nose or mouth which are spread when a person with COVID-19 coughs or exhales. These droplets land on objects and surfaces around the person. Other people then catch COVID-19 by touching these objects or surfaces, then touching their eyes, nose or mouth. People can also catch COVID-19 if they breathe in droplets from a person with COVID-19 who coughs out or exhales droplets. This is why it is important to stay more than 1 meter (3 feet) away from a person who is sick</string>
+    <string name="answer_five">Studies to date suggest that the virus that causes COVID-19 is mainly transmitted through contact with respiratory droplets rather than through the air. See previous answer on “How does COVID-19 spread?”</string>
+    <string name="answer_six">The main way the disease spreads is through respiratory droplets expelled by someone who is coughing. The risk of catching COVID-19 from someone with no symptoms at all is very low. However, many people with COVID-19 experience only mild symptoms. This is particularly true at the early stages of the disease. It is therefore possible to catch COVID-19 from someone who has, for example, just a mild cough and does not feel ill.</string>
+    <string name="answer_seven">The risk of catching COVID-19 from the feces of an infected person appears to be low. While initial investigations suggest the virus may be present in feces in some cases, spread through this route is not a main feature of the outbreak. The ongoing research on the ways COVID-19 is spread and will continue to share new findings. Because this is a risk, however, it is another reason to clean hands regularly, after using the bathroom and before eating</string>
+    <string name="answer_eight">Stay aware of the latest information on the COVID-19 outbreak, available on the national,state and local public health authority. Many countries around the world have seen cases of COVID-19 and several have seen outbreaks. Authorities in China and some other countries have succeeded in slowing or stopping their outbreaks. However, the situation is unpredictable so check regularly for the latest news</string>
+    <string name="answer_nine">• Regularly and thoroughly clean your hands with an alcohol- based hand rub or wash them with soap and water. Why? Washing your hands with soap and water or using alcohol-based hand rub kills viruses that may be on your hands. • Maintain at least 1 metre (3 feet) distance between yourself and anyone who is coughing or sneezing. Why? When someone coughs or sneezes they spray small liquid droplets from their nose or mouth which may contain virus. If you are too close, you can breathe in the droplets, including the COVID-19 virus if the person coughing has the disease. • Avoid touching eyes, nose and mouth. Why? Hands touch many surfaces and can pick up viruses. Once contaminated, hands can transfer the virus to your eyes, nose or mouth.</string>
+    <string name="answer_ten">Follow the guidance outlined above (Protection measures for everyone) o Self-isolate by staying at home if you begin to feel unwell, even with mild symptoms such as headache, low grade fever (37.3 C or above) and slight runny nose, until you recover. If it is essential for you to have someone bring you supplies or to go out, e.g. to buy food, then wear a mask to avoid infecting other people. Why? Avoiding contact with others and visits to medical facilities will allow these facilities to operate more effectively and help protect you and others from possible COVID-19 and other viruses. o If you develop fever, cough and difficulty breathing, seek medical advice promptly as this may be due to a respiratory infection or other serious condition. Call in advance and tell your provider of any recent travel or contact with travelers. Why? Calling in advance will allow your health care provider to quickly direct you to the right health facility. This will also help to prevent possible spread of COVID-19 and other viruses.</string>
+    <string name="answer_eleven">The risk depends on where you are - and more specifically, whether there is a COVID-19 outbreak unfolding there. For most people in most locations the risk of catching COVID-19 is still low. However, there are now places around the world (cities or areas) where the disease is spreading. For people living in, or visiting, these areas the risk of catching COVID-19 is higher. Governments and health authorities are taking vigorous action every time a new case of COVID-19 is identified. Be sure to comply with any local restrictions on travel, movement or large gatherings. Cooperating with disease control efforts will reduce your risk of catching or spreading COVID-19</string>
+    <string name="answer_twelve">Illness due to COVID-19 infection is generally mild, especially for children and young adults. However, it can cause serious illness: about 1 in every 5 people who catch it need hospital care. It is therefore quite normal for people to worry about how the COVID-19 outbreak will affect them and their loved ones. We can channel our concerns into actions to protect ourselves, our loved ones and our communities. First and foremost among these actions is regular and thorough hand-washing and good respiratory hygiene. Secondly, keep informed and follow the advice of the local health authorities including any restrictions put in place on travel, movement and gatherings.</string>
+    <string name="answer_thirteen">While we are still learning about how COVID-2019 affects people, older persons and persons with pre-existing medical conditions (such as high blood pressure, heart disease, lung disease, cancer or diabetes) appear to develop serious illness more often than others.</string>
+    <string name="answer_fourteen">No. Antibiotics do not work against viruses, they only work on bacterial infections. COVID-19 is caused by a virus, so antibiotics do not work. Antibiotics should not be used as a means of prevention or treatment of COVID-19. They should only be used as directed by a physician to treat a bacterial infection</string>
+    <string name="answer_fifteen">While some western, traditional or home remedies may provide comfort and alleviate symptoms of COVID-19, there is no evidence that current medicine can prevent or cure the disease. We does not recommend self-medication with any medicines, including antibiotics, as a prevention or cure for COVID-19. However, there are several ongoing clinical trials that include both western and traditional medicines. We will continue to provide updated information as soon as clinical findings are available.</string>
+    <string name="action_add_doctor">Add New Doctor</string>
+    <string name="name_of_doctor">Name of Doctor</string>
+    <string name="et_hint_description">eg. 360 Research Foundation</string>
+    <string name="doctor_name_empty_error">Doctor\'s Name can\'t be empty</string>
+    <string name="please_enter_valid_mobile_number">Please enter a valid mobile number.</string>
+    <string name="doctor_added_success_message">\"New Doctor added Successfully</string>
 </resources>

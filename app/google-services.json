@@ -7,14 +7,14 @@
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:533093229039:android:96f202ae0b3c1c98a4d61a",
+        "mobilesdk_app_id": "1:533093229039:android:4f781d33552da1cba4d61a",
         "android_client_info": {
           "package_name": "covid360rf.covid360"
         }
       },
       "oauth_client": [
         {
-          "client_id": "533093229039-6hlo7r434iocpgerhrf7iiki30np188n.apps.googleusercontent.com",
+          "client_id": "533093229039-gh6p4fdcheu045tb6h5vfk2js1ko8rok.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
             "package_name": "covid360rf.covid360",

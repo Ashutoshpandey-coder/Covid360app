@@ -159,8 +159,14 @@ class MainActivity : BaseActivity(), NavigationView.OnNavigationItemSelectedList
             R.id.nav_self_diagnosis ->{
                 startActivity(Intent(this@MainActivity,SelfDiagnosisActivity::class.java))
             }
+            R.id.action_profile ->{
+                startActivity(Intent(this@MainActivity,ProfileActivity::class.java))
+            }
+            R.id.action_faq->{
+                startActivity(Intent(this@MainActivity,FAQActivity::class.java))
+            }
             R.id.nav_consult_a_doctor ->{
-                Toast.makeText(this, "consult a doctor", Toast.LENGTH_SHORT).show()
+                startActivity(Intent(this@MainActivity,ConsultationActivity::class.java))
             }
             R.id.nav_about_covid360 ->{
                 startActivity(Intent(this@MainActivity,AboutAppActivity::class.java))

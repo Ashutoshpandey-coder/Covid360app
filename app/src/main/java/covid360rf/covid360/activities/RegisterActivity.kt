@@ -16,6 +16,8 @@ import com.google.firebase.auth.PhoneAuthOptions
 import com.google.firebase.auth.PhoneAuthProvider
 import covid360rf.covid360.R
 import covid360rf.covid360.databinding.ActivityRegisterBinding
+import covid360rf.covid360.firebase.FireStoreClass
+import covid360rf.covid360.model.User
 import java.util.concurrent.TimeUnit
 
 
@@ -167,14 +169,21 @@ class RegisterActivity : BaseActivity() {
 
         firebaseAuth.signInWithCredential(credential)
             .addOnSuccessListener {
-//                val phone = firebaseAuth.currentUser!!.phoneNumber
+                val phone = firebaseAuth.currentUser!!.phoneNumber
+
+                val user  = User(
+                    firebaseAuth.currentUser!!.uid,
+                    binding.etName.text.toString().trim{ it<= ' '},
+                    phone.toString()
+                )
+                FireStoreClass().registerUser(this,user)
+
                 Toast.makeText(this, "Thank you for registering with us", Toast.LENGTH_SHORT).show()
                 val intent = Intent(this, MainActivity::class.java)
                 intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TASK
                 intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK
                 startActivity(intent)
                 finish()
-                hideProgressDialog()
             }.addOnFailureListener { e ->
                 hideProgressDialog()
                 Toast.makeText(
@@ -252,6 +261,9 @@ class RegisterActivity : BaseActivity() {
             currentUserId = currentUser.uid
         }
         return currentUserId
+    }
+    fun userRegisteredSuccess(){
+        hideProgressDialog()
     }
 
 
