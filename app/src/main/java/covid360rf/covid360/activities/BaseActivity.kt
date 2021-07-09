@@ -2,8 +2,6 @@ package covid360rf.covid360.activities
 
 import android.app.Activity
 import android.app.Dialog
-import android.content.Context
-import android.content.Intent
 import android.os.Handler
 import android.os.Looper
 import android.widget.TextView
@@ -31,7 +29,7 @@ open class BaseActivity : AppCompatActivity() {
 
         /*Set the screen content from a layout resource.
         The resource will be inflated, adding all top-level views to the screen.*/
-        mProgressDialog.setContentView(R.layout.dialog_progress)
+        mProgressDialog.setContentView(R.layout.layout_progress_dialog)
 
         mProgressDialog.findViewById<TextView>(R.id.tv_progress_text).text = text
 

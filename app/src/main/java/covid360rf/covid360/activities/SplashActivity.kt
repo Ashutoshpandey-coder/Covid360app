@@ -36,8 +36,10 @@ class SplashActivity : AppCompatActivity() {
                 start(MainActivity::class.java)
             }
 
+            //start(MainActivity::class.java)
+
             /**
-             * While developing on app, Navigate directly to MainActivity
+             * On development, Navigate directly to MainActivity
              * ...instead of authenticating phone
              * start(MainActivity::class.java)
              */

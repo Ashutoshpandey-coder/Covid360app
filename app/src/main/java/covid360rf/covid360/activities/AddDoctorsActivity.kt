@@ -8,7 +8,6 @@ import android.net.Uri
 import android.os.Bundle
 import android.text.TextUtils
 import android.util.Log
-import android.widget.Toast
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import com.bumptech.glide.Glide
@@ -19,6 +18,9 @@ import covid360rf.covid360.databinding.ActivityAddDoctorsBinding
 import covid360rf.covid360.firebase.FireStoreClass
 import covid360rf.covid360.model.Doctors
 import covid360rf.covid360.utils.Constants
+import covid360rf.covid360.utils.getFileExtension
+import covid360rf.covid360.utils.showImageChooser
+import covid360rf.covid360.utils.toast
 import java.io.IOException
 
 class AddDoctorsActivity : BaseActivity() {
@@ -30,7 +32,7 @@ class AddDoctorsActivity : BaseActivity() {
         binding = ActivityAddDoctorsBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        setUpActionBar(this,binding.toolbarAddDoctorActivity,getString(R.string.action_add_doctor))
+        setUpActionBar(this,findViewById(R.id.toolbar),getString(R.string.action_add_doctor))
 
         binding.ivDoctorImageView.setOnClickListener{
             if (ContextCompat.checkSelfPermission(
@@ -38,7 +40,7 @@ class AddDoctorsActivity : BaseActivity() {
                     Manifest.permission.READ_EXTERNAL_STORAGE
                 ) == PackageManager.PERMISSION_GRANTED
             ) {
-                Constants.showImageChooser(this)
+                showImageChooser(this)
             } else {
                 ActivityCompat.requestPermissions(
                     this, arrayOf(Manifest.permission.READ_EXTERNAL_STORAGE),
@@ -64,13 +66,9 @@ class AddDoctorsActivity : BaseActivity() {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults)
         if (requestCode == Constants.READ_STORAGE_PERMISSION_CODE) {
             if (grantResults.isNotEmpty() && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
-                Constants.showImageChooser(this)
+                showImageChooser(this)
             } else {
-                Toast.makeText(
-                    this,
-                    "Oops! you just denied the permission for storage. You can allow it from settings.",
-                    Toast.LENGTH_SHORT
-                ).show()
+                toast("Oops! you just denied the permission for storage. You can allow it from settings.")
             }
         }
     }
@@ -119,7 +117,7 @@ class AddDoctorsActivity : BaseActivity() {
             val mSrf : StorageReference = FirebaseStorage.getInstance().reference.child(Constants.DOCTOR_IMAGE
                     + System.currentTimeMillis()
                     + "." +
-                    Constants.getFileExtension(this,mSelectedImageUri))
+                    getFileExtension(this,mSelectedImageUri))
 
             mSrf.putFile(mSelectedImageUri!!).addOnSuccessListener {
                     taskSnapShot->
@@ -137,7 +135,7 @@ class AddDoctorsActivity : BaseActivity() {
                 }
             }.addOnFailureListener{
                     exception->
-                Toast.makeText(this, exception.message, Toast.LENGTH_SHORT).show()
+                toast(exception.message.toString())
                 hideProgressDialog()
             }
         }
@@ -157,7 +155,7 @@ class AddDoctorsActivity : BaseActivity() {
 
     fun addDoctorSuccess(){
         hideProgressDialog()
-        Toast.makeText(this, getString(R.string.doctor_added_success_message), Toast.LENGTH_SHORT).show()
+        toast(getString(R.string.doctor_added_success_message))
         setResult(Activity.RESULT_OK)
         finish()
     }

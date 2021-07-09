@@ -1,7 +1,6 @@
 package covid360rf.covid360.activities
 
 import android.annotation.SuppressLint
-import android.content.Intent
 import android.os.Bundle
 import android.os.CountDownTimer
 import android.text.TextUtils
@@ -14,6 +13,9 @@ import com.google.firebase.auth.PhoneAuthOptions
 import com.google.firebase.auth.PhoneAuthProvider
 import covid360rf.covid360.R
 import covid360rf.covid360.databinding.ActivityRegisterBinding
+import covid360rf.covid360.firebase.FireStoreClass
+import covid360rf.covid360.model.User
+import covid360rf.covid360.utils.start
 import covid360rf.covid360.utils.toast
 import java.util.concurrent.TimeUnit
 
@@ -34,9 +36,7 @@ class RegisterActivity : BaseActivity() {
         binding = ActivityRegisterBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-
-        setUpActionBar(getString(R.string.register))
-
+        setUpActionBar(this, binding.toolbarSignUpActivity, getString(R.string.register))
 
         binding.tvResendCodeTimer.text = "00 : " + (timeDuration / 1000).toString()
 
@@ -72,7 +72,7 @@ class RegisterActivity : BaseActivity() {
                 binding.cvVerify.visibility = View.VISIBLE
 
                 toast("Verification code sent successfully")
-                setUpActionBar("Verification Code")
+                //setUpActionBar(this@RegisterActivity, findViewById(R.id.toolbar), "Verification code")
             }
 
         }
@@ -119,24 +119,6 @@ class RegisterActivity : BaseActivity() {
         }
     }
 
-
-    private fun setUpActionBar(title: String) {
-        setSupportActionBar(binding.toolbarSignUpActivity)
-
-        binding.toolbarSignUpActivity.title = title
-
-        val actionBar = supportActionBar
-
-        if (actionBar != null) {
-            actionBar.setDisplayHomeAsUpEnabled(true)
-            actionBar.setHomeAsUpIndicator(R.drawable.ic_black_color_back_24dp)
-        }
-
-        binding.toolbarSignUpActivity.setNavigationOnClickListener {
-            onBackPressed()
-        }
-    }
-
     private fun startPhoneNumberVerification(phone: String) {
         val options = PhoneAuthOptions.newBuilder(firebaseAuth)
             .setPhoneNumber(phone)
@@ -160,11 +142,18 @@ class RegisterActivity : BaseActivity() {
         firebaseAuth.signInWithCredential(credential)
             .addOnSuccessListener {
 //                val phone = firebaseAuth.currentUser!!.phoneNumber
+
+                val phone = firebaseAuth.currentUser!!.phoneNumber
+
+                val user  = User(
+                    firebaseAuth.currentUser!!.uid,
+                    binding.etName.text.toString().trim{ it<= ' '},
+                    phone.toString()
+                )
+                FireStoreClass().registerUser(this,user)
+
                 toast("Thank you for registering with us")
-                val intent = Intent(this, MainActivity::class.java)
-                intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TASK
-                intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK
-                startActivity(intent)
+                start(MainActivity::class.java)
                 finish()
             }.addOnFailureListener { e ->
                 hideProgressDialog()
@@ -234,14 +223,8 @@ class RegisterActivity : BaseActivity() {
         }
     }
 
-    fun getCurrentUserId(): String {
-        val currentUser = FirebaseAuth.getInstance().currentUser
-        var currentUserId = ""
-        if (currentUser != null) {
-            currentUserId = currentUser.uid
-        }
-        return currentUserId
+    fun userRegisteredSuccess(){
+        hideProgressDialog()
     }
-
 
 }

@@ -4,6 +4,7 @@
     package="covid360rf.covid360">
 
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
 
     <application
         android:allowBackup="true"
@@ -14,7 +15,6 @@
         android:theme="@style/Theme.Covid360"
         android:usesCleartextTraffic="true"
         tools:targetApi="m">
-
         <activity
             android:name=".activities.SplashActivity"
             android:screenOrientation="portrait"
@@ -25,6 +25,26 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity
+            android:name=".activities.AddDoctorsActivity"
+            android:screenOrientation="portrait"
+            tools:ignore="LockedOrientationActivity" />
+        <activity
+            android:name=".activities.FAQActivity"
+            android:screenOrientation="portrait"
+            tools:ignore="LockedOrientationActivity" />
+        <activity
+            android:name=".activities.ConsultationActivity"
+            android:screenOrientation="portrait"
+            tools:ignore="LockedOrientationActivity" />
+        <activity
+            android:name=".activities.ProfileActivity"
+            android:screenOrientation="portrait"
+            tools:ignore="LockedOrientationActivity" />
+        <activity
+            android:name=".activities.PrecautionsActivity"
+            android:screenOrientation="portrait"
+            tools:ignore="LockedOrientationActivity" />
         <activity
             android:name=".activities.SelfDiagnosisActivity"
             android:screenOrientation="portrait"
@@ -51,16 +71,14 @@
             tools:ignore="LockedOrientationActivity" />
         <activity
             android:name=".activities.IntroActivity"
+            android:launchMode="singleTop"
             android:screenOrientation="portrait"
             tools:ignore="LockedOrientationActivity" />
         <activity android:name=".activities.BaseActivity" />
         <activity
             android:name=".activities.MainActivity"
             android:screenOrientation="portrait"
-            android:windowSoftInputMode="stateHidden"
             tools:ignore="LockedOrientationActivity" />
-
-        <activity android:name=".activities.PrecautionsActivity"/>
     </application>
 
 </manifest>

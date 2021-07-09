@@ -4,7 +4,6 @@ import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
 import covid360rf.covid360.R
-import covid360rf.covid360.databinding.ActivityAbout360rfBinding
 import covid360rf.covid360.databinding.ActivityAboutAppBinding
 import covid360rf.covid360.utils.Constants
 import covid360rf.covid360.utils.startAction

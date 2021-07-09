@@ -6,6 +6,11 @@
             android:icon="@drawable/ic_home_icon_24"
             android:title="@string/nav_home"
             android:checked="true"/>
+
+        <item android:id="@+id/action_profile"
+            android:icon="@drawable/ic_profile_24"
+            android:title="@string/profile"/>
+
         <item android:id="@+id/nav_precaution"
             android:icon="@drawable/outline_report_problem_24"
             android:title="@string/nav_precautions"/>
@@ -21,6 +26,10 @@
         <item android:id="@+id/nav_consult_a_doctor"
             android:icon="@drawable/outline_assignment_24"
             android:title="@string/nav_consult_a_doctor"/>
+
+        <item  android:id="@+id/action_faq"
+            android:icon="@drawable/faq_icon_24"
+            android:title="@string/faq"/>
     </group>
 
     <item android:title="@string/app_name">

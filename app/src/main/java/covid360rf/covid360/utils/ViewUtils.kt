@@ -1,9 +1,14 @@
 package covid360rf.covid360.utils
 
+import android.app.Activity
 import android.content.Context
 import android.content.Intent
 import android.net.Uri
+import android.provider.MediaStore
+import android.webkit.MimeTypeMap
 import android.widget.Toast
+import com.google.firebase.auth.FirebaseAuth
+import covid360rf.covid360.utils.Constants.PICK_IMAGE_REQUEST_CODE
 import kotlin.math.abs
 import kotlin.math.log10
 
@@ -48,4 +53,22 @@ fun formatLargeNumber(number : Long): String{
 fun Double.length() = when(this) {
     0.0 -> 1
     else -> log10(abs(toDouble())).toInt() + 1
+}
+
+fun showImageChooser(activity : Activity){
+    val intent = Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI)
+    activity.startActivityForResult(intent,PICK_IMAGE_REQUEST_CODE)
+}
+//This function just return the extension of image
+fun getFileExtension(activity : Activity, uri : Uri?) : String?{
+    return MimeTypeMap.getSingleton().getMimeTypeFromExtension(activity.contentResolver.getType(uri!!))
+}
+
+fun getCurrentUserId(): String {
+    val currentUser = FirebaseAuth.getInstance().currentUser
+    var currentUserId = ""
+    if (currentUser != null) {
+        currentUserId = currentUser.uid
+    }
+    return currentUserId
 }

@@ -8,7 +8,6 @@ import android.view.WindowManager
 import covid360rf.covid360.databinding.ActivityIntroBinding
 import covid360rf.covid360.utils.start
 
-
 class IntroActivity : AppCompatActivity() {
     
     private lateinit var binding : ActivityIntroBinding

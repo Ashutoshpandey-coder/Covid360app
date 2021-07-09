@@ -1,5 +1,6 @@
 package covid360rf.covid360.activities
 
+import android.app.Activity
 import android.app.AlertDialog
 import android.content.SharedPreferences
 import android.graphics.Color
@@ -9,6 +10,7 @@ import android.text.TextWatcher
 import android.view.MenuItem
 import android.widget.EditText
 import android.widget.TextView
+import androidx.appcompat.widget.Toolbar
 import androidx.coordinatorlayout.widget.CoordinatorLayout
 import androidx.core.view.GravityCompat
 import androidx.core.widget.NestedScrollView
@@ -66,8 +68,7 @@ class MainActivity : BaseActivity(), NavigationView.OnNavigationItemSelectedList
         mNavigationView = findViewById(R.id.nav_view)
         mDrawerLayout = findViewById(R.id.drawer_layout)
 
-
-        setUpActionBar()
+        setUpActionBar(findViewById(R.id.toolbar), getString(R.string.app_name))
 
         swipeRefreshLayout  = linearLayout.findViewById(R.id.swipeRefreshLayout)
         swipeRefreshLayout.setOnRefreshListener(this)
@@ -114,11 +115,12 @@ class MainActivity : BaseActivity(), NavigationView.OnNavigationItemSelectedList
 
         })
     }
-    private fun setUpActionBar(){
-        val toolbar : androidx.appcompat.widget.Toolbar = findViewById(R.id.toolbar)
+
+    private fun setUpActionBar( toolbar: Toolbar, title: String){
         setSupportActionBar(toolbar)
-        toolbar.setNavigationIcon(R.drawable.ic_action_navigation_menu)
-        supportActionBar?.title = getString(R.string.app_name)
+        supportActionBar?.title = title
+        supportActionBar?.setDisplayHomeAsUpEnabled(true)
+        supportActionBar?.setHomeAsUpIndicator(R.drawable.ic_action_navigation_menu)
 
         toolbar.setNavigationOnClickListener {
             toggleDrawer()
@@ -156,8 +158,14 @@ class MainActivity : BaseActivity(), NavigationView.OnNavigationItemSelectedList
             R.id.nav_self_diagnosis ->{
                 start(SelfDiagnosisActivity::class.java)
             }
+            R.id.action_profile ->{
+                start(ProfileActivity::class.java)
+            }
+            R.id.action_faq->{
+                start(FAQActivity::class.java)
+            }
             R.id.nav_consult_a_doctor ->{
-                toast("consult a doctor")
+                start(ConsultationActivity::class.java)
             }
             R.id.nav_about_covid360 ->{
                 start(AboutAppActivity::class.java)

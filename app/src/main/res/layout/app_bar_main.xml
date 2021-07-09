@@ -17,7 +17,7 @@
         app:layout_behavior="@string/appbar_scrolling_view_behavior"
         android:id="@+id/swipeRefreshLayout">
 
-    <include layout="@layout/main_content"
+    <include layout="@layout/content_main"
         android:id="@+id/main_content"/>
 
     </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
