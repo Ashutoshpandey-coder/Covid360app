@@ -15,6 +15,7 @@
         android:padding="@dimen/paddingLarge"
         android:clipToPadding="false"
         android:paddingStart="24dp"
-        android:paddingEnd="24dp"/>
+        android:paddingEnd="24dp"
+        tools:listitem="@layout/layout_precaution_item"/>
 
 </LinearLayout>
