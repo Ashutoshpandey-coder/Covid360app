@@ -7,10 +7,12 @@ import android.os.Handler
 import android.os.Looper
 import android.view.Menu
 import android.view.MenuItem
+import android.view.View
 import androidx.recyclerview.widget.LinearLayoutManager
 import covid360rf.covid360.R
 import covid360rf.covid360.adapters.DoctorsListItemAdapter
 import covid360rf.covid360.databinding.ActivityConsultationBinding
+
 import covid360rf.covid360.firebase.FireStoreClass
 import covid360rf.covid360.model.Doctors
 import covid360rf.covid360.model.User
@@ -24,7 +26,9 @@ class ConsultationActivity : BaseActivity() {
         binding = ActivityConsultationBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        showProgressDialog(getString(R.string.please_wait))
+//        showProgressDialog(getString(R.string.please_wait))
+        binding.shimmerViewContainer.visibility = View.VISIBLE
+        binding.shimmerViewContainer.startShimmerAnimation()
         FireStoreClass().gettingListOfDoctors(this)
 
         getUserDetails()
@@ -36,33 +40,34 @@ class ConsultationActivity : BaseActivity() {
     }
     fun loadUserData(user : User){
         mUserDetails = user
-        hideProgressDialog()
+//        hideProgressDialog()
+        binding.shimmerViewContainer.visibility = View.GONE
+        binding.shimmerViewContainer.stopShimmerAnimation()
     }
 
     fun gettingListOfDoctors( doctorsList : ArrayList<Doctors>){
 
         if (doctorsList.size > 0){
+
+            binding.rvDoctorsList.visibility = View.VISIBLE
             binding.rvDoctorsList.layoutManager = LinearLayoutManager(this)
             binding.rvDoctorsList.setHasFixedSize(true)
 
             val adapter = DoctorsListItemAdapter(this,doctorsList)
             binding.rvDoctorsList.adapter = adapter
-            hideProgressDialog()
+//            hideProgressDialog()
+            binding.shimmerViewContainer.visibility = View.GONE
+            binding.shimmerViewContainer.stopShimmerAnimation()
         }else{
-            hideProgressDialog()
+//            hideProgressDialog()
+            binding.shimmerViewContainer.visibility = View.GONE
+            binding.shimmerViewContainer.stopShimmerAnimation()
         }
 
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
-        Handler(Looper.myLooper()!!).postDelayed({
-            if(mUserDetails.phone != ""){
-                if (mUserDetails.phone == Constants.TEAM_MEMBER_NUMBER) {
-                    menuInflater.inflate(R.menu.add_doctor_menu, menu)
-                }
-            }
-
-        },1000)
+        menuInflater.inflate(R.menu.add_doctor_menu, menu)
         return false
     }
 
@@ -79,7 +84,9 @@ class ConsultationActivity : BaseActivity() {
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         if (resultCode == Activity.RESULT_OK && requestCode == Constants.ADD_DOCTORS_ACTIVITY_RESULT){
-            showProgressDialog(getString(R.string.please_wait))
+//            showProgressDialog(getString(R.string.please_wait))
+            binding.shimmerViewContainer.visibility = View.VISIBLE
+            binding.shimmerViewContainer.startShimmerAnimation()
             FireStoreClass().gettingListOfDoctors(this)
         }
         @Suppress("DEPRECATION")

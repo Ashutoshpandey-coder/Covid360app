@@ -39,4 +39,10 @@
     <color name="secondaryDarkColor">#9e00c5</color>
 
     <color name="divider_color">#EAEAEA</color>
+
+    <color name="placeholder_bg">#dddddd</color>
+    <color name="item_name">#0c0c0c</color>
+    <color name="description">#1a1a1a</color>
+    <color name="light_grey_color">#777</color>
+    <color name="colorLightGray">#777</color>
 </resources>

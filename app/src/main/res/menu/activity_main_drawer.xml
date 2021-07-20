@@ -14,9 +14,9 @@
         <item android:id="@+id/nav_precaution"
             android:icon="@drawable/outline_report_problem_24"
             android:title="@string/nav_precautions"/>
-        <item android:id="@+id/nav_test_centres"
+     <!--   <item android:id="@+id/nav_test_centres"
             android:icon="@drawable/outline_business_center_24"
-            android:title="@string/nav_test_centres"/>
+            android:title="@string/nav_test_centres"/>-->
         <item android:id="@+id/nav_vaccination_info"
             android:icon="@drawable/outline_medical_services_24"
             android:title="@string/nav_vaccination_info"/>

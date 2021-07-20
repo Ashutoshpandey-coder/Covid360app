@@ -11,10 +11,12 @@ import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.PhoneAuthCredential
 import com.google.firebase.auth.PhoneAuthOptions
 import com.google.firebase.auth.PhoneAuthProvider
+import com.google.firebase.database.FirebaseDatabase
 import covid360rf.covid360.R
 import covid360rf.covid360.databinding.ActivityRegisterBinding
 import covid360rf.covid360.firebase.FireStoreClass
 import covid360rf.covid360.model.User
+import covid360rf.covid360.utils.Constants
 import covid360rf.covid360.utils.start
 import covid360rf.covid360.utils.toast
 import java.util.concurrent.TimeUnit
@@ -29,6 +31,7 @@ class RegisterActivity : BaseActivity() {
     private var mCallback: PhoneAuthProvider.OnVerificationStateChangedCallbacks? = null
     private var mVerificationId: String? = null
     private lateinit var firebaseAuth: FirebaseAuth
+    private lateinit var database : FirebaseDatabase
 
     @SuppressLint("SetTextI18n")
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -44,6 +47,7 @@ class RegisterActivity : BaseActivity() {
         binding.cvVerify.visibility = View.GONE
 
         firebaseAuth = FirebaseAuth.getInstance()
+        database = FirebaseDatabase.getInstance()
 
         mCallback = object : PhoneAuthProvider.OnVerificationStateChangedCallbacks() {
             override fun onVerificationCompleted(phoneAuthCredential: PhoneAuthCredential) {
@@ -151,6 +155,8 @@ class RegisterActivity : BaseActivity() {
                     phone.toString()
                 )
                 FireStoreClass().registerUser(this,user)
+                // storing data in realtime database
+                database.reference.child(Constants.USERS).child(firebaseAuth.currentUser!!.uid).setValue(user)
 
                 toast("Thank you for registering with us")
                 start(MainActivity::class.java)

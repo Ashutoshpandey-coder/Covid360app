@@ -13,6 +13,7 @@ object Constants {
 
     const val USERS : String = "users"
     const val DOCTORS : String = "doctors"
+    const val CHATS : String = "chats"
 
     const val NAME : String = "name"
     const val PHONE : String = "phone"
@@ -22,6 +23,8 @@ object Constants {
     const val ADD_DOCTORS_ACTIVITY_RESULT  = 4
     const val READ_STORAGE_PERMISSION_CODE = 1
     const val PICK_IMAGE_REQUEST_CODE = 2
+
+    const val DOCTOR_DETAILS : String = "doctor_details"
 
     // staff mobile numbers
     const val TEAM_MEMBER_NUMBER : String = "+917838653842"

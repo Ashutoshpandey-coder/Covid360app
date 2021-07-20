@@ -149,9 +149,9 @@ class MainActivity : BaseActivity(), NavigationView.OnNavigationItemSelectedList
             R.id.nav_precaution ->{
                 start(PrecautionsActivity::class.java)
             }
-            R.id.nav_test_centres ->{
+           /* R.id.nav_test_centres ->{
                 start(TestsCentresActivity::class.java)
-            }
+            }*/
             R.id.nav_vaccination_info ->{
                 start(VaccinationCentresActivity::class.java)
             }

@@ -1,14 +1,18 @@
 package covid360rf.covid360.adapters
 
+import android.annotation.SuppressLint
+import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
+import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
 import covid360rf.covid360.R
+import covid360rf.covid360.activities.VaccinationCentresActivity
 import covid360rf.covid360.model.VaccinationCentre
 
-class VaccinationCentresAdapter(private val centerList: List<VaccinationCentre>) :
+class VaccinationCentresAdapter(private val context : Context, private val centerList: List<VaccinationCentre>) :
         RecyclerView.Adapter<VaccinationCentresAdapter.CenterRVViewHolder>() {
 
     class CenterRVViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
@@ -32,6 +36,7 @@ class VaccinationCentresAdapter(private val centerList: List<VaccinationCentre>)
 
     override fun getItemCount(): Int = centerList.size
 
+    @SuppressLint("SetTextI18n")
     override fun onBindViewHolder(holder: CenterRVViewHolder, position: Int) {
         val currentItem = centerList[position]
 
@@ -42,5 +47,11 @@ class VaccinationCentresAdapter(private val centerList: List<VaccinationCentre>)
         holder.centerAgeLimitTV.text = "Age Limit : ${currentItem.ageLimit}"
         holder.centerFeeTypeTV.text = currentItem.fee_type
         holder.availability.text = "Availability : ${currentItem.availableCapacity}"
+
+        holder.itemView.setOnClickListener {
+            if (context is VaccinationCentresActivity){
+                context.onClickOpenAddressButton(currentItem.centerAddress)
+            }
+        }
     }
 }

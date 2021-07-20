@@ -1,11 +1,29 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/intro_background"
+    xmlns:shimmer="http://schemas.android.com/apk/res-auto"
     tools:context=".activities.VaccinationCentresActivity"
     android:orientation="vertical">
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar_vaccination_centers_activity"
+        android:layout_width="match_parent"
+        android:background="@color/colorPrimary"
+        android:layout_height="?attr/actionBarSize">
+
+        <TextView
+            android:id="@+id/tv_title"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center_vertical"
+            android:text="@string/nav_vaccination_info"
+            android:textColor="@color/white"
+            android:textStyle="bold"
+            android:textSize="@dimen/toolbar_title_text_size"/>
+    </androidx.appcompat.widget.Toolbar>
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -34,6 +52,40 @@
             android:text="Search"
             android:textAllCaps="false" />
     </LinearLayout>
+
+    <TextView
+        android:id="@+id/tv_search_message"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:text="@string/message_to_search_for_centers"
+        android:textColor="@color/primary_text_color"
+        android:textSize="18sp"
+        android:gravity="center"
+        android:layout_gravity="center"/>
+
+    <com.facebook.shimmer.ShimmerFrameLayout
+        android:id="@+id/shimmer_view_container"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:orientation="vertical"
+        shimmer:duration="800">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <include layout="@layout/shimmer_layout_vaccination_centre"/>
+            <include layout="@layout/shimmer_layout_vaccination_centre"/>
+            <include layout="@layout/shimmer_layout_vaccination_centre"/>
+            <include layout="@layout/shimmer_layout_vaccination_centre"/>
+
+
+
+        </LinearLayout>
+
+    </com.facebook.shimmer.ShimmerFrameLayout>
 
     <!--progress bar for loading indicator-->
     <ProgressBar
