@@ -26,7 +26,6 @@ class ConsultationActivity : BaseActivity() {
         binding = ActivityConsultationBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-//        showProgressDialog(getString(R.string.please_wait))
         binding.shimmerViewContainer.visibility = View.VISIBLE
         binding.shimmerViewContainer.startShimmerAnimation()
         FireStoreClass().gettingListOfDoctors(this)
@@ -38,9 +37,9 @@ class ConsultationActivity : BaseActivity() {
     private fun getUserDetails(){
         FireStoreClass().loadUserData(this)
     }
+
     fun loadUserData(user : User){
         mUserDetails = user
-//        hideProgressDialog()
         binding.shimmerViewContainer.visibility = View.GONE
         binding.shimmerViewContainer.stopShimmerAnimation()
     }
@@ -48,21 +47,16 @@ class ConsultationActivity : BaseActivity() {
     fun gettingListOfDoctors( doctorsList : ArrayList<Doctors>){
 
         if (doctorsList.size > 0){
-
             binding.rvDoctorsList.visibility = View.VISIBLE
             binding.rvDoctorsList.layoutManager = LinearLayoutManager(this)
             binding.rvDoctorsList.setHasFixedSize(true)
 
-            val adapter = DoctorsListItemAdapter(this,doctorsList)
+            val adapter = DoctorsListItemAdapter(this, doctorsList)
             binding.rvDoctorsList.adapter = adapter
-//            hideProgressDialog()
-            binding.shimmerViewContainer.visibility = View.GONE
-            binding.shimmerViewContainer.stopShimmerAnimation()
-        }else{
-//            hideProgressDialog()
-            binding.shimmerViewContainer.visibility = View.GONE
-            binding.shimmerViewContainer.stopShimmerAnimation()
         }
+
+        binding.shimmerViewContainer.visibility = View.GONE
+        binding.shimmerViewContainer.stopShimmerAnimation()
 
     }
 

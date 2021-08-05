@@ -38,6 +38,8 @@
             android:layout_weight="1"
             android:layout_margin="@dimen/marginLarge"
             android:hint="Enter PinCode"
+            android:padding="@dimen/paddingLarge"
+            android:fontFamily="@font/raleway_medium"
             android:maxLength="6"
             android:inputType="number"
             android:background="@drawable/edit_primary"/>
@@ -50,7 +52,8 @@
             android:layout_margin="@dimen/marginLarge"
             android:background="@drawable/btn_primary"
             android:text="Search"
-            android:textAllCaps="false" />
+            android:textAllCaps="false"
+            android:fontFamily="@font/raleway_medium"/>
     </LinearLayout>
 
     <TextView
@@ -76,10 +79,10 @@
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
-            <include layout="@layout/shimmer_layout_vaccination_centre"/>
-            <include layout="@layout/shimmer_layout_vaccination_centre"/>
-            <include layout="@layout/shimmer_layout_vaccination_centre"/>
-            <include layout="@layout/shimmer_layout_vaccination_centre"/>
+            <include layout="@layout/layout_shimmer_vaccination"/>
+            <include layout="@layout/layout_shimmer_vaccination"/>
+            <include layout="@layout/layout_shimmer_vaccination"/>
+            <include layout="@layout/layout_shimmer_vaccination"/>
 
 
 

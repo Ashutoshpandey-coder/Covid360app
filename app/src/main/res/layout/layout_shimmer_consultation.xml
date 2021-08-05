@@ -3,7 +3,6 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:orientation="vertical"
     android:layout_marginBottom="@dimen/item_doctor_content_marginBottom">
 
@@ -25,25 +24,23 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:orientation="vertical"
             android:layout_marginStart="@dimen/item_doctor_name_layout_marginStart">
-            <TextView
+            <View
                 android:id="@+id/tv_name"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="0dp"
+                android:layout_weight="1"
                 android:background="@color/placeholder_bg"
-                android:textColor="@color/primary_text_color"
-                android:textSize="@dimen/item_doctor_name_text_size"
-                tools:text ="Doctor name"/>
-            <TextView
+                android:layout_margin="@dimen/marginSmall"/>
+            <View
                 android:id="@+id/tv_description"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="0dp"
+                android:layout_weight="1"
                 android:background="@color/placeholder_bg"
-                android:textColor="@color/secondary_text_color"
-                android:textSize="@dimen/item_doctor_created_by_text_size"
-                tools:text ="Designation"/>
+                android:layout_margin="@dimen/marginSmall"/>
 
         </LinearLayout>
     </LinearLayout>

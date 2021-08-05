@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:layout_gravity="start"
+    android:layout_margin="@dimen/marginSmall"
+    android:padding="@dimen/paddingSmall"
+    android:background="@drawable/bg_receiver">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:layout_marginStart="@dimen/marginLarge">
+
+        <TextView
+            android:id="@+id/tv_receiver_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:inputType="textMultiLine|text"
+            android:maxWidth="270dp"
+            android:minWidth="50dp"
+            android:text="Hey check this out"
+            android:textColor="@color/white"
+            android:textSize="@dimen/textSmall"
+            tools:ignore="TextViewEdits"
+            android:padding="@dimen/paddingSmall"/>
+
+        <TextView
+            android:id="@+id/tv_receiver_time"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="13:00pm"
+            android:textColor="@color/white"
+            android:gravity="end"
+            android:layout_margin="@dimen/marginSmall"
+            android:textSize="@dimen/textTiny"/>
+    </LinearLayout>
+
+</FrameLayout>

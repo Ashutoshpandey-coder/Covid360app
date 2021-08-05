@@ -5,15 +5,18 @@ object Constants {
     const val FOUNDATION_URL = "http://www.360rf.in/"
     const val WHO_PRECAUTIONS_URL = "https://www.who.int/westernpacific/emergencies/covid-19/information/transmission-protective-measures"
 
-    const val SPLASH_WAIT_TIME: Long = 2000
-    const val KILO:Double = 1000.0
-    const val MILLION:Double = 1000000.0
+    const val SPLASH_WAIT_TIME : Long = 2000
+    const val KILO : Double = 1000.0
+    const val MILLION : Double = 1000000.0
 
     const val RECYCLER_ITEM_SCROLL_WAIT_TIME: Long = 2500
 
     const val USERS : String = "users"
     const val DOCTORS : String = "doctors"
     const val CHATS : String = "chats"
+
+    const val SENDER_VIEW_TYPE = 1
+    const val RECEIVER_VIEW_TYPE = 2
 
     const val NAME : String = "name"
     const val PHONE : String = "phone"

@@ -1,13 +1,12 @@
 package covid360rf.covid360.model
 
-
 import android.os.Parcel
 import android.os.Parcelable
 
 data class MessageModel (
     val id : String = "",
     val message : String = "",
-    var time : Long = 0L
+    var timeStamp : Long = 0L,
         ) : Parcelable {
     constructor(parcel: Parcel) : this(
         parcel.readString()!!,
@@ -22,7 +21,7 @@ data class MessageModel (
     override fun writeToParcel(parcel: Parcel, flags: Int) {
         parcel.writeString(id)
         parcel.writeString(message)
-        parcel.writeLong(time)
+        parcel.writeLong(timeStamp)
     }
 
     companion object CREATOR : Parcelable.Creator<MessageModel> {

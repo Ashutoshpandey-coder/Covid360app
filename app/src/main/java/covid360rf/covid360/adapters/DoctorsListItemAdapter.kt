@@ -7,7 +7,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import covid360rf.covid360.R
-import covid360rf.covid360.activities.ChatboxActivity
+import covid360rf.covid360.activities.ChatActivity
 import covid360rf.covid360.databinding.LayoutDoctorBinding
 import covid360rf.covid360.model.Doctors
 import covid360rf.covid360.utils.Constants
@@ -30,8 +30,8 @@ class DoctorsListItemAdapter(private val context: Context,
         holder.binding.tvDescription.text = model.description
 
         holder.itemView.setOnClickListener {
-            val intent = Intent(context,ChatboxActivity::class.java)
-            intent.putExtra(Constants.DOCTOR_DETAILS,model)
+            val intent = Intent(context,ChatActivity::class.java)
+            intent.putExtra(Constants.DOCTOR_DETAILS, model)
             context.startActivity(intent)
         }
 

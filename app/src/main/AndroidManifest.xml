@@ -15,10 +15,6 @@
         android:theme="@style/Theme.Covid360"
         android:usesCleartextTraffic="true"
         tools:targetApi="m">
-        <activity android:name=".activities.ChatboxActivity"
-            android:screenOrientation="portrait"
-            tools:ignore="LockedOrientationActivity"
-            android:windowSoftInputMode="adjustResize"/>
         <activity
             android:name=".activities.SplashActivity"
             android:screenOrientation="portrait"
@@ -91,6 +87,11 @@
             android:name=".activities.ResultActivity"
             android:screenOrientation="portrait"
             tools:ignore="LockedOrientationActivity" />
+
+        <activity android:name=".activities.ChatActivity"
+            android:screenOrientation="portrait"
+            tools:ignore="LockedOrientationActivity"
+            android:windowSoftInputMode="adjustResize"/>
     </application>
 
 </manifest>

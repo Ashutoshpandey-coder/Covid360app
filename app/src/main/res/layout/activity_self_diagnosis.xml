@@ -73,7 +73,8 @@
                     android:layout_marginTop="8dp"
                     android:background="@drawable/option_selected_bg"
                     android:padding="8dp"
-                    android:text="get started"
+                    android:fontFamily="@font/raleway_medium"
+                    android:text="Get started"
                     android:textStyle="bold" />
             </LinearLayout>
         </androidx.cardview.widget.CardView>
